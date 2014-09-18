@@ -45,7 +45,7 @@ class DoTo(object):
         return partial(self._do, item)
 ```
 
-Usage:
+With method chaining we can emulate behavior of clojure `doto`:
 
 ```python
 window = QMainWindow()
