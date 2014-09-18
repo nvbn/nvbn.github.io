@@ -30,6 +30,9 @@ can be translated in clojure code like:
 And i wrote hackish class for doing something similar in python.
 
 ```python
+from functools import partial
+
+
 class DoTo(object):
     def __init__(self, obj):
         self._obj = obj
