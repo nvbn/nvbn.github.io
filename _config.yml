@@ -1,0 +1,6 @@
+highlighter: pygments
+name: nvbn blog
+permalink: pretty
+paginate: 10
+markdown: redcarpet
+excerpt_separator: <!-- more -->
