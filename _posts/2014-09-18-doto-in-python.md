@@ -20,7 +20,7 @@ window.show()
 can be translated in clojure code like:
 
 ```clojure
-(doto (.QMainWindow)
+(doto (QMainWindow.)
       (.setTitle title)
       (.setWindowFlags Qt/FramelessWindowHint)
       (.setAttribute Qt/WA_TransparentForMouseEvents True)
