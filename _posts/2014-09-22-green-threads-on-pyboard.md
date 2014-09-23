@@ -7,7 +7,7 @@ date:       2014-09-22 21:36:00
 Some weeks ago i received new fancy device &mdash; [pyboard](http://micropython.org/).
 It's like arduino, but using python instead of wiring. I was little disappointed, because micropython wasn't have multithreading module.
 
-And i developed [microasync](https://github.com/nvbn/microasync) &mdash; library with green threads for micropathon.
+And i developed [microasync](https://github.com/nvbn/microasync) &mdash; library with green threads for micropython.
 
 Little example, code for toggling leds concurrently:
 
