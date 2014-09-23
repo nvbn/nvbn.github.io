@@ -2,6 +2,7 @@
 layout:     post
 title:      doto from clojure in python
 date:       2014-09-18 12:32:18
+keywords:   python, clojure, macros, doto, method chaining  
 ---
 
 When i writing code in clojure i can use good macro &ndash; [doto](http://clojuredocs.org/clojure_core/1.3.0/clojure.core/doto).

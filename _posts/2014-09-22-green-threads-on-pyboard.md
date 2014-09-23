@@ -2,6 +2,7 @@
 layout:     post
 title:      Green threads on pyboard
 date:       2014-09-22 21:36:00
+keywords:   green threads, micropython, pyboard, python
 ---
 
 Some weeks ago i received new fancy device &mdash; [pyboard](http://micropython.org/).
