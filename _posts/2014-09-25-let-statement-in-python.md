@@ -19,8 +19,7 @@ def let(locals_, **bindings):
     original = {var: locals_.get(var) for var in bindings.keys()}
     locals_.update(bindings)
     yield
-    for var, val in original.items():
-        locals_[var] = val
+    locals_.update(original)
 ```
 
 And usage:
@@ -51,8 +50,7 @@ def let(**bindings):
     original = {var: locals_.get(var) for var in bindings.keys()}
     locals_.update(bindings)
     yield
-    for var, val in original.items():
-        locals_[var] = val
+    locals_.update(original)
 ```
 
 Now we don't need to pass `locals` explicitly:
