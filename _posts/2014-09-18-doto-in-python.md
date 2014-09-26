@@ -25,7 +25,7 @@ can be translated in clojure code like:
       (.setTitle title)
       (.setWindowFlags Qt/FramelessWindowHint)
       (.setAttribute Qt/WA_TransparentForMouseEvents True)
-      (.show)
+      (.show))
 ```
 
 And i wrote hackish class for doing something similar in python.
