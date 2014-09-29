@@ -35,4 +35,4 @@ loop()
 
 And result:
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/xTzie-bQh8M" frameborder="0" allowfullscreen></iframe>
+<iframe width="766" height="430" src="//www.youtube.com/embed/xTzie-bQh8M" frameborder="0" allowfullscreen></iframe>
