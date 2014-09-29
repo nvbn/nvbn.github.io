@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Switching windows with Leap Motion
+title:      Switching windows with Leap&nbsp;Motion
 date:       2014-09-29 06:43:00
 keywords:   Leap Motion, switch windows, python, ubuntu  
 ---
