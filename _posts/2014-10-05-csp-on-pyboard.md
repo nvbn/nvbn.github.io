@@ -5,7 +5,7 @@ date:       2014-10-05 07:26:00
 keywords:   CSP, pyboard, micropython, js, javascript, clojure, clojurescript, core.async
 ---
 
-Lately i'm work a lot with clojure and core.async, and i very impressed with [CSP](http://en.wikipedia.org/wiki/Communicating_sequential_processes).
+Lately i worked a lot with clojure and core.async, and i was very impressed with [CSP](http://en.wikipedia.org/wiki/Communicating_sequential_processes).
 Mostly because it saves me from js callback hell.
 For example, js code with sequential http requests (heh, with promises it's less ugly):
 
@@ -18,7 +18,7 @@ $http.get('/users/').then(function(data){
     console.log(posts);
 });
 ```
-With clojurescript and core.async will be:
+With clojurescript and core.async it will be:
 
 ```clojure
 (go (let [users (<! (http/get "/users/"))]
