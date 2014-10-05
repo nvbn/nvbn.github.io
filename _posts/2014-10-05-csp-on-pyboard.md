@@ -11,9 +11,9 @@ For example, js code with sequential http requests (heh, with promises it's less
 
 ```javascript
 $http.get('/users/').then(function(data){
-    $http.post('/user-data/', data.items);
+    return $http.post('/user-data/', data.items);
 }).then(function(){
-    $http.get('/posts/');
+    return $http.get('/posts/');
 }).then(function(posts){
     console.log(posts);
 });
