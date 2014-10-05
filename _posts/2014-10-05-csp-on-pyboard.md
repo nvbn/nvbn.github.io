@@ -44,11 +44,11 @@ def servo_coroutine():
     switch = get_switch()
     on = False
     x = 0
-    accel_or_switch = select(switch, accel)  # like select from go and like to clojure core.async alts!
+    accel_or_switch = select(switch, accel)  # like select from go and like clojure core.async alts!
     while True:
         chan, val = yield accel_or_switch.get()  # like clojure (<! (accel_or_switch))
         if chan == accel:
-            x, *_ = val
+            x, *_ = val  # we don't need y and z
         elif chan == switch:
             on = not on
 
