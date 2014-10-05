@@ -22,7 +22,7 @@ With clojurescript and core.async will be:
 
 ```clojure
 (go (let [users (<! (http/get "/users/"))]
-       (<! (http/post "/user-data/" (:items data)))
+       (<! (http/post "/user-data/" (:items users)))
        (js/console.log (<! (http/get "/posts/)))))
 ```
 Clojurescript code looks more readable and simple.
