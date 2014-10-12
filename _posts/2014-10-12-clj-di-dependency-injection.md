@@ -44,4 +44,4 @@ And with `let-deps` macro (useful for receiving more than one dependency):
   ..)
 ```
 
-You can see more on [github](https://github.com/stuartsierra/component) and in [documentation](http://nvbn.github.io/clj-di/).
+You can see more on [github](https://github.com/nvbn/clj-di/) and in [documentation](http://nvbn.github.io/clj-di/).
