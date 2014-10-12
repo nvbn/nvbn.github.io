@@ -25,8 +25,8 @@ Library has two ways for registering dependencies. Permanently with `register!`
 And for code block with `with-registered` (i use it in tests for registering mocks):
 
 ```clojure
-(with-registered :db (Database.)
-                 :logger (get-logger)
+(with-registered [:db (Database.)
+                  :logger (get-logger)]
   ...)
 ```
 
