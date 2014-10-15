@@ -92,9 +92,9 @@ from microasync.async import coroutine
 
 @coroutine
 def main():
-    first_led = switchable_filter(get_bicolar_led('X1', 'X2'),  # creates bicolor led and applies filter
+    first_led = switchable_filter(get_bicolor_led('X1', 'X2'),  # creates bicolor led and applies filter
                                   lambda msg: msg != 'red') 
-    second_led = switchable_filter(get_bicolar_led('X3', 'X4'),
+    second_led = switchable_filter(get_bicolor_led('X3', 'X4'),
                                    lambda msg: msg == 'red')
     while True:
         for led in (first_led, second_led):
