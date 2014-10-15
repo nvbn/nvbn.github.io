@@ -2,7 +2,7 @@
 layout:     post
 title:      CSP on pyboard
 date:       2014-10-05 07:26:00
-keywords:   CSP, pyboard, micropython, js, javascript, clojure, clojurescript, core.async
+keywords:   CSP, pyboard, micropython, js, javascript, clojure, clojurescript, core.async, microasync
 ---
 
 Lately i worked a lot with clojure and core.async, and i was very impressed with [CSP](http://en.wikipedia.org/wiki/Communicating_sequential_processes).
