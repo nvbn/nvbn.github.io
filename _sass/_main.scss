@@ -459,3 +459,19 @@ Copyright (c) 2014 Daniel Eden
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
 }
+
+.entry, .post-content {
+  overflow: hidden;
+
+  img {
+    width: auto;
+  }
+
+  img[alt='book cover'] {
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 50px;
+  }
+}
+
+
