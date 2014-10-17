@@ -12,5 +12,5 @@ sometimes I used to think that content repeats. Some code samples are controvers
 not always follows PEP8.
 
 But I think this book worth reading, they contains good explanation of magic methods,
-good examples of using `abc` and `collections.abc`, interesting chapters about logging
+good examples of using `abc` and `collections.abc`, interesting chapter about logging
 and good manual for documenting python code.
