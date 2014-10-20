@@ -1,5 +1,7 @@
 highlighter: pygments
 name: nvbn blog
+url: http://nvbn.github.io
+clojure_rss_name: 'rss_clojure.xml'
 permalink: pretty
 paginate: 10
 markdown: redcarpet
