@@ -92,11 +92,11 @@ Now look to implementation with underscore.js and destructuring arguments:
 transform = (serializedForm) ->
     _.chain serializedForm
      .reject ({name, value}) ->
-        value == '' or name == 'csrfmiddlewaretoken'
+         value == '' or name == 'csrfmiddlewaretoken'
      .groupBy 'name'
      .map (vals, name) ->
-        vals = _.map(vals, ({value}) -> value)
-        [name, if vals.length > 1 then vals else vals[0]]
+         vals = _.map(vals, ({value}) -> value)
+         [name, if vals.length > 1 then vals else vals[0]]
      .object()
      .value()
 ```
