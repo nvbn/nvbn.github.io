@@ -8,7 +8,7 @@ keywords:   coffeescript, arguments destructuring, underscore.js
 CoffeeScript has good and fairly undocumented feature &mdash; destructuring arguments. It's
 very similar to [binding forms](http://clojure.org/special_forms#toc18) from clojure
 and a bit like pattern matching like in scala and erlang. It has syntax similar to [destructuring assignment](http://coffeescript.org/#destructuring)
-but works functions (and methods) arguments.
+but works with functions (and methods) arguments.
 
 Simple examples:
 
