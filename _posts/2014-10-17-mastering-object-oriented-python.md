@@ -2,7 +2,7 @@
 layout:     post
 title:      "Steven F. Lott: Mastering Object-oriented Python"
 date:       2014-10-17 05:19:00
-keywords:   python, book, OOP
+keywords:   book
 ---
 
 ![book cover](/assets/0971OS.jpg) Few days ago I finished reading
