@@ -5,8 +5,8 @@ date:       2014-11-05 23:26:00
 keywords:   clojure, clojurescript, test, mock
 ---
 
-When I write tests for code in clojurescript and core.async I feel little pain &mdash;
-`with-redefs` doesn't work correctly with go-blocks. For example I have function:
+When I write tests for the code in clojurescript and core.async I feel little pain &mdash;
+`with-redefs` doesn't work correctly with go-blocks. For example I have a function:
 
 ```clojure
 (defn get-subtitles
@@ -17,7 +17,7 @@ When I write tests for code in clojurescript and core.async I feel little pain &
           format-dates)))
 ```
 
-And test for it:
+And the test for it:
 
 ```clojure
 (deftest ^:async test-get-subtitles
@@ -26,7 +26,7 @@ And test for it:
         (done))))
 ```
 
-It doesn't works, it tries to actually make http request. Ok, I can try put `with-redefs`
+It didn't work, it actually tries to make http request. Ok, I can try to put `with-redefs`
 inside go-block:
 
 ```clojure
@@ -39,10 +39,10 @@ inside go-block:
 ```
 
 The first assertion works, but in the second assertion I have previously redefined `http/get`
-and it's incorrect and assertion fails &mdash; `with-redefs` permanently changes var
-when applied in go-block.
+and it's incorrect and the assertion fails &mdash; `with-redefs` permanently changes var
+when applied in the go-block.
 
-So I developed little macro which works like `with-redefs` and can be used inside of go-block
+So I've developed a little macro which works like `with-redefs` and can be used inside of go-block
 and with code without core.async:
 
 ```clojure

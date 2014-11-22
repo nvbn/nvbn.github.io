@@ -1,11 +1,11 @@
 ---
 layout:     post
-title:      Simple application for google glass written in scala
+title:      Simple application for Google Glass written in scala
 date:       2014-10-27 23:11:00
 keywords:   scala, android, google glass
 ---
 
-About a month ago I received google glass and only on last weekend I found a time for
+About a month ago I received Google Glass and only last weekend I found time for
 developing something for it. I don't have a lot of experience in developing software for
 android, so I've started developing simple TODO application.
 
@@ -13,12 +13,12 @@ As a language I selected scala (but I think I should try to write similar applic
 and gradle as a build system (because it works out of the box with [Android Studio](https://developer.android.com/sdk/installing/studio.html)).
 
 For integrating scala and gradle I've used [gradle-android-scala-plugin](https://github.com/saturday06/gradle-android-scala-plugin)
-which works perfect and requires adding only ~10 lines to `build.gradle` for configuration.
+which works perfectly and requires adding only ~10 lines to `build.gradle` for configuration.
 
 And I used [scaloid](https://github.com/pocorall/scaloid) &mdash;
-it's a very great library, it makes work with android api less painful and makes code a bit more Scala-style.
+it's a very great library, it makes work with android API less painful and makes code a bit more Scala-style.
 
-Developing in scala for android is fun, but I stumbled in one not straightforward problem
+Developing in scala for android is fun, but I stumbled over one not straightforward problem
 (perhaps it's straightforward for mature android developers) &mdash; compilation fails with:
 
 ```
@@ -30,7 +30,7 @@ Developing in scala for android is fun, but I stumbled in one not straightforwar
 ...
 ```
 
-And simple solution &mdash; change my proguard config to:
+And the simple solution &mdash; change my proguard config to:
 
 ```
 -dontoptimize
@@ -43,7 +43,7 @@ And simple solution &mdash; change my proguard config to:
 -ignorewarnings
 ```
 
-Another minus it's a compile time. My simple application compiles
+Another minus it's compile time. My simple application compiles
 around 1.5 minutes, tests &mdash; around 1 minute. But I found that incremental compilation
 will be available soon in [gradle-android-scala-plugin](https://github.com/saturday06/gradle-android-scala-plugin/issues/30),
 so this minus will disappear.
