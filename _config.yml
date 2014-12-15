@@ -1,6 +1,6 @@
 highlighter: pygments
 name: nvbn blog
-url: http://nvbn.github.io
+url: https://nvbn.github.io
 permalink: pretty
 paginate: 10
 markdown: redcarpet
