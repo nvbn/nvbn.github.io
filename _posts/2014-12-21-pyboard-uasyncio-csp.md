@@ -23,8 +23,20 @@ First of all I created decorator for simplifying creating generators which retur
 make all interaction through it:
 
 ```python
+class OnlyChanged(Queue):
+    def __init__(self, *args, **kwargs):
+        self._last_val = None
+        super().__init__(*args, **kwargs)
+
+    def put(self, val):
+        # Put in queue only if value changed
+        if val != self._last_val:
+            yield from super().put(val)
+            self._last_val = val
+
+
 def chan(fn):
-    q = Queue(maxsize=1)
+    q = OnlyChanged(1)
 
     def wrapper(*args, **kwargs):
         get_event_loop().call_soon(fn(q, *args, **kwargs))
@@ -51,18 +63,15 @@ def get_display(q, *args, **kwargs):
 
 ![oled display](/assets/pyboard_csp_display.jpg)
 
-And generator for the ultrasonic sensor which puts value to the queue only if it changed:
+And generator for the ultrasonic sensor which puts value to the queue:
 
 ```python
 @chan
 def get_ultrasonic(q, *args, **kwargs):
     ultrasonic = Ultrasonic(*args, **kwargs)
-    last_val = None
     while True:
         val = yield from ultrasonic.distance_in_cm()
-        if val != last_val:
-            yield from q.put(val)
-            last_val = val
+        yield from q.put(val)
 
 >>> ultrasonic = get_ultrasonic('X1', 'X2')
 >>> yield from ultrasonic.get()
@@ -75,12 +84,9 @@ Similar generator for the pyboard gyro sensors:
 @chan
 def get_gyro(q):
     accel = pyb.Accel()
-    last_val = None
     while True:
         val = accel.filtered_xyz()
-        if val != last_val:
-            yield from q.put(val)
-            last_val = val
+        yield from q.put(val)
 
 >>> gyro = get_gyro()
 >>> yield from gyro.get()
