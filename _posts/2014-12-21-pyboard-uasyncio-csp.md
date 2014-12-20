@@ -7,7 +7,7 @@ keywords:   python, micropython, pyboard
 
 Not so far ago [@pfalcon](https://github.com/pfalcon) mentioned in
 [microasync bugtracker](https://github.com/nvbn/microasync/issues/1) about a port of
-asyncio for micropython &mdash; [uasyncio](https://github.com/micropython/micropython-lib).
+asyncio for micropython &ndash; [uasyncio](https://github.com/micropython/micropython-lib).
 After that I ported asynchronous queue from asyncio to uasyncio, so now it can replace microasync.
 
 So I conceived a little project: device which prints information from pyboard gyro sensor
