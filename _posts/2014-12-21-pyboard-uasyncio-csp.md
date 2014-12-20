@@ -36,9 +36,8 @@ class OnlyChanged(Queue):
 
 
 def chan(fn):
-    q = OnlyChanged(1)
-
     def wrapper(*args, **kwargs):
+        q = OnlyChanged(1)
         get_event_loop().call_soon(fn(q, *args, **kwargs))
         return q
     return wrapper
