@@ -78,7 +78,7 @@ def get_ultrasonic(q, *args, **kwargs):
 28.012
 ```
 
-Similar generator for the pyboard gyro sensors:
+Similar generator for the pyboard gyro sensor:
 
 ```python
 @chan
