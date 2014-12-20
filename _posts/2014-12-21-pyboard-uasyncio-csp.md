@@ -62,7 +62,7 @@ def get_display(q, *args, **kwargs):
 
 ![oled display](/assets/pyboard_csp_display.jpg)
 
-And generator for the ultrasonic sensor which puts value to the queue:
+And generator for the ultrasonic sensor which puts values to the queue:
 
 ```python
 @chan
