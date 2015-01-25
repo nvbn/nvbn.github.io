@@ -149,6 +149,6 @@ docker build -t example/nginx .
 docker run -p 8080:80 --link app:app example/nginx
 ```
 
-It works well and it very simple, for my project I've chosen that solution.
+It works well and it's very simple, for my projects I've chosen that solution.
 But it has one drawback &ndash; for updating static we should wait 30 minutes
 or we should restart the nginx container.
