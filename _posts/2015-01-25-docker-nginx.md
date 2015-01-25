@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Serving a static using the nginx with the docker
+title:      Serving static using the nginx with the docker
 date:       2015-01-25 03:35:00
 keywords:   docker, nginx
 ---
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 ```
 And also for proper work of this app there should be image in `static/image.png`.
 
-Back to the task, **the first idea &ndash; put the static in a volume**. So `Dockerfile` for
+Back to the task, **the first idea &ndash; put static in a volume**. So `Dockerfile` for
 the application should be like this:
 
 ```dockerfile
@@ -87,7 +87,7 @@ And it works! You can visit [localhost:8080](http://localhost:8080) for ensuring
 But actually it don't &ndash; it'll be not that cool if we want to scale this web app.
 There will be one container with static and web app and also `n` containers with just a web app.
 
-So, **the second idea &ndash; create a data volume container with the static**.
+So, **the second idea &ndash; create a data volume container with static**.
 `Dockerfile` for it:
 
 ```dockerfile
@@ -107,7 +107,7 @@ docker run -p 8080:80 --link app:app --volumes-from static example/nginx
 This variant works great, but isn't it too complex? Maybe there is a more simpler solution?
 And probably it exists.
 
-And, **the third idea &ndash; just cache the static in the nginx**.
+And, **the third idea &ndash; just cache static in the nginx**.
 So we should update the nginx config to something like this:
 
 ```nginx
