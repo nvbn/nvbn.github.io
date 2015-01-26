@@ -1,12 +1,12 @@
 ---
 layout:     post
-title:      Serving static using the nginx with the docker
+title:      Serving static using nginx with docker
 date:       2015-01-25 03:35:00
 keywords:   docker, nginx
 ---
 
 Imagine common situation when we have a container with a web application and a container
-with the nginx, and we want to serve the web app static using nginx. Sounds very
+with nginx, and we want to serve the web app static using nginx. Sounds very
 simple but actually it isn't.
 
 Before I start, source code of the simple web application which I want to run inside a container:
@@ -48,7 +48,7 @@ docker run -p 5000:5000 --name app example/app
 After that you can visit [localhost:5000](http://localhost:5000) and ensure
 that app works.
 
-Now go to the container for the nginx. First of all we should write config for the nginx:
+Now go to the container for nginx. First of all we should write config for nginx:
 
 ```nginx
 upstream app_upstream {
@@ -76,7 +76,7 @@ RUN rm /etc/nginx/conf.d/*
 COPY app.conf /etc/nginx/conf.d/
 ```
 
-So now we can build and run the nginx:
+So now we can build and run nginx:
 
 ```bash
 docker build -t example/nginx .
@@ -96,7 +96,7 @@ VOLUME static
 COPY . static
 ```
 
-And now we should build it, run it and restart the nginx container:
+And now we should build it, run it and restart nginx container:
 
 ```bash
 docker build -t example/static .
@@ -107,8 +107,8 @@ docker run -p 8080:80 --link app:app --volumes-from static example/nginx
 This variant works great, but isn't it too complex? Maybe there is a more simpler solution?
 And probably it exists.
 
-And, **the third idea &ndash; just cache static in the nginx**.
-So we should update the nginx config to something like this:
+And, **the third idea &ndash; just cache static in nginx**.
+So we should update nginx config to something like this:
 
 ```nginx
 proxy_cache_path /tmp/cache levels=1:2 keys_zone=cache:30m max_size=1G;
@@ -132,7 +132,7 @@ server {
 }
 ```
 
-And `Dockerfile` for the nginx to:
+And `Dockerfile` for nginx to:
 
 ```dockerfile
 FROM nginx:1.7
@@ -151,4 +151,4 @@ docker run -p 8080:80 --link app:app example/nginx
 
 It works well and it's very simple, for my projects I've chosen that solution.
 But it has one drawback &ndash; for updating static we should wait 30 minutes
-or we should restart the nginx container.
+or we should restart nginx container.
