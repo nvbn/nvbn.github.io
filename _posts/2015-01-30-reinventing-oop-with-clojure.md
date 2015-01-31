@@ -7,7 +7,7 @@ keywords:   clojure, oop
 
 From books all we know that main principles of OOP is polymorphism and encapsulation,
 but other meaning is that the significant aspect of OOP is a message passing.
-And in Clojure we have cool library for dealing with message &ndash;
+And in Clojure we have a cool library for dealing with messages &ndash;
 [core.async](https://github.com/clojure/core.async). So we can build simple "object"
 with it, and we can use [core.match](https://github.com/clojure/core.match) for "parsing" messages
 in this "object".
@@ -112,26 +112,24 @@ user=> (let [result (chan)]
 Last call looks too complex, let's add a few helpers to make it easier:
 
 ```clojure
+(defn call
+  [obj & msg]
+  (go (let [result (chan)]
+        (>! obj (conj (vec msg) result))
+        (<! result))))
+
 (defn call!!
   [obj & msg]
-  (let [result (chan)]
-    (>!! obj (conj (vec msg) result))
-    (<!! result)))
-
-(defn call!
-  [obj & msg]
-  (let [result (chan)]
-    (>! obj (conj (vec msg) result))
-    (<! result)))
+  (<!! (apply call obj msg)))
 ```
 
-`call!` should be used only inside a `go-block`, `call!!` &mdash; outside. Let's look to them in action:
+`call!!` should be used only outside of `go-block`, `call` &mdash; in combination with `<!` and `<!!`. Let's look to them in action:
 
 ```clojure
 user=> (call!! answering-dog :how-many-barks?)
 2
 
-user=> (<!! (call! answering-dog :how-many-barks?))
+user=> (<!! (call answering-dog :how-many-barks?))
 2
 
 user=> (call!! answering-dog :set-barks!)
