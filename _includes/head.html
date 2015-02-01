@@ -22,5 +22,9 @@
         ga('create', 'UA-55084459-1', 'auto');
         ga('send', 'pageview');
 
+        var host = "nvbn.github.io";
+        if (host == window.location.host && window.location.protocol != "https:")
+            window.location.protocol = "https";
+
     </script>
 </head>
