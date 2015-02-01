@@ -482,7 +482,11 @@ Copyright (c) 2014 Daniel Eden
 #paginator {
   margin-top: 50px;
   font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 51px;
+  font-size: 30px;
   font-weight: 900;
   text-decoration: none;
+
+  .more {
+    float: right;
+  }
 }
