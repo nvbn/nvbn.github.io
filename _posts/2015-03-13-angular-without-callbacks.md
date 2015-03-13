@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Writing angularjs code without callbacks"
-date:       2015-03-15 14:22:00
+date:       2015-03-13 14:22:00
 keywords:   javascript, angularjs, coffeescript
 ---
 
