@@ -76,7 +76,7 @@ class h(metaclass=HBase):
     def __getitem__(self, childs):
         if not hasattr(childs, '__iter__'):
             childs = [childs]
-        return h(self._name, childs)
+        return type(self)(self._name, childs)
         
     def _format_childs(self):
         if self._childs is None:
@@ -121,7 +121,7 @@ class h(metaclass=HBase):
     def __getitem__(self, childs):
         if not hasattr(childs, '__iter__'):
             childs = [childs]
-        return h(self._name, childs, self._attrs)
+        return type(self)(self._name, childs, self._attrs)
         
     def __call__(self, **attrs):
         return type(self)(self._name, self._childs, attrs)
