@@ -134,7 +134,7 @@ class h(metaclass=HBase):
     def _format_attrs(self):
         if self._attrs:
             return ' ' + ' '.join([self._format_attr(name, val)
-                                   for name, val in (self._attrs).items()])
+                                   for name, val in self._attrs.items()])
         else:
             return ''
         
