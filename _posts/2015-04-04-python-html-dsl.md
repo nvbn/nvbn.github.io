@@ -187,7 +187,7 @@ In [30]: h.body[
             h.h2(klass='title')[post.title],
             post.text]
         for post in posts)]]
-Out [30]
+Out [30]:
 <body><div class="header"><h1>Web page</h1>
 <img class="logo" src="logo.png"></img></div>
 <div class="posts"><article><h2 class="title">Title 0</h2>
