@@ -38,12 +38,12 @@ Let's start with simplest part, implement ability to call `h.p` and
 `h.div`, for this I'll use magic of metaclasses and `__getattr__`:
 
 ```python
-class HBase(type):
+class hBase(type):
     def __getattr__(cls, name):
         return cls(name)
         
         
-class h(metaclass=HBase):
+class h(metaclass=hBase):
     def __init__(self, name):
         self._name = name
         
@@ -63,12 +63,12 @@ childs for html element with `h.div[h.h2, h.p]`, magic of `__getitem__`
 will help me:
 
 ```python
-class HBase(type):
+class hBase(type):
     def __getattr__(cls, name):
         return cls(name)
 
 
-class h(metaclass=HBase):
+class h(metaclass=hBase):
     def __init__(self, name, childs=None):
         self._name = name
         self._childs = childs
@@ -107,12 +107,12 @@ python we not allowed to use `class` as a name of argument,
 so I'll use `klass` instead. So here I'll use magic of `__call__`:
 
 ```python
-class HBase(type):
+class hBase(type):
     def __getattr__(cls, name):
         return cls(name)
 
 
-class h(metaclass=HBase):
+class h(metaclass=hBase):
     def __init__(self, name, childs=None, attrs=None):
         self._name = name
         self._childs = childs
