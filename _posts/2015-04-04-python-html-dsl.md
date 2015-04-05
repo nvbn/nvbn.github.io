@@ -166,7 +166,7 @@ Out [20]:
 ```
 
 Yep, it's working, and it's a simple DSL/template language just in
-44 lines of code, thank you to Python magic methods. It can be used
+44 lines of code, thanks to Python magic methods. It can be used
 in more complex situations, for example &ndash; blog page:
 
 ```python
