@@ -24,7 +24,11 @@ var html = (
 );
 ```
 
-But in Python we don't have similar DSL [(upd: actually we have)](http://lxml.de/tutorial.html#the-e-factory), and isn't it be cool
+But in Python we don't have similar DSL (upd: actually we have:
+[lxml.E](http://lxml.de/tutorial.html#the-e-factory),
+[pyxl](https://github.com/dropbox/pyxl),
+[Dominate](https://github.com/Knio/dominate) and
+[The DOM](https://github.com/timothycrosley/thedom)), and isn't it be cool
 (actually it isn't, I don't recommend to do something like this,
 it's just an experiment) to write something like this:
  
