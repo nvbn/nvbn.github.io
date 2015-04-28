@@ -45,7 +45,7 @@ def handle_repl():
 
 
 def iteration():
-    """Function for overriding.""
+    """Function for overriding."""
 
 
 while True:
