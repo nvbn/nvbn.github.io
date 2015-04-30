@@ -47,6 +47,12 @@ a multimethod:
       print)
   state)
 
+(defmethod run-symbol \,
+  [_ {:keys [pos] :as state}]
+  (->> (read-line)
+       first
+       (assoc-in state [:stack pos])))
+
 (defmethod run-symbol :default [_ state] state)
 ```
 
