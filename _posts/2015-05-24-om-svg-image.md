@@ -38,6 +38,6 @@ It just put a raw html inside `<g>` SVG tag. Usage:
 Solution is a bit ugly and unsafe, but it works:
 
 <iframe src="/assets/svg-image/index.html" width="100%"
-        scrolling="no"></iframe>
+        scrolling="no" frameBorder="0"></iframe>
 
 [Gist with the example sources from the iframe.](https://gist.github.com/nvbn/2fb29382674e18eb9b76)
