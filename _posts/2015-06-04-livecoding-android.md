@@ -49,15 +49,15 @@ And write your ip address in `:websocket-host` in `:figwheel` section of
                            [bocko-android "0.1.3-1"]]
             :plugins [[lein-cljsbuild "1.0.6"]
                       [lein-figwheel "0.3.3"]]
-            {:cljsbuild {:builds {:main {:source-paths ["src"]
-                                         :figwheel {:websocket-host "192.168.0.107"}
-                                         :compiler {:output-to "resources/public/compiled/main.js"
-                                                    :output-dir "resources/public/compiled"
-                                                    :asset-path "/compiled"
-                                                    :main bocko-example.core
-                                                    :source-map true
-                                                    :optimizations :none
-                                                    :pretty-print false}}}}})
+            :cljsbuild {:builds {:main {:source-paths ["src"]
+                                        :figwheel {:websocket-host "192.168.0.107"}
+                                        :compiler {:output-to "resources/public/compiled/main.js"
+                                                   :output-dir "resources/public/compiled"
+                                                   :asset-path "/compiled"
+                                                   :main bocko-example.core
+                                                   :source-map true
+                                                   :optimizations :none
+                                                   :pretty-print false}}}})
 ```
 
 [Bocko on Android github.](https://github.com/nvbn/bocko-android)
