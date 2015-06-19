@@ -1,0 +1,11 @@
+{
+  "name": "nvbn.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "browser-sync": "^2.7.12",
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.2",
+    "lodash": "^3.9.3"
+  }
+}
