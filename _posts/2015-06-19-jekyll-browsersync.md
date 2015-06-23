@@ -29,6 +29,8 @@ var browserSync = require('browser-sync').create();
 
 // Task for building blog when something changed:
 gulp.task('build', shell.task(['bundle exec jekyll build --watch']));
+// Or if you don't use bundle:
+// gulp.task('build', shell.task(['jekyll build --watch']));
 
 // Task for serving blog with Browsersync
 gulp.task('serve', function () {
