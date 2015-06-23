@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "React-like tool to work with canvas"
+title:      "React-like tool for working with canvas"
 date:       2015-06-23 17:50:00
 keywords:   clojure, clojurescript
 ---
