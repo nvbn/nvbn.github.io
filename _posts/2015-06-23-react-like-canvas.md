@@ -49,7 +49,7 @@ So, first example &ndash; a rotating rectangle:
 ```
 
 Code is very low level (in comparison with the code for the same
-[rectangle with svg](/2015/05/29/svg-animation/)), but it works pretty smooth: 
+[rectangle with svg](/2015/05/28/svg-animation/)), but it works pretty smooth: 
 
 <iframe src="/assets/rerenderer/index.html#scene-1" width="100%" height="100" frameBorder="0" scrolling="no"></iframe>
 <a href="/assets/rerenderer/index.html#scene-1" target="_blank">(open on a new page)</a>
