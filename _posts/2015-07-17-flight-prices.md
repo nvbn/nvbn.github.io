@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Searching for a cheap flight tickets with Clojure and Chrome"
+title:      "Searching for a cheap flight ticket with Clojure and Chrome"
 date:       2015-07-17 03:45:00
 keywords:   clojure, chrome
 ---
