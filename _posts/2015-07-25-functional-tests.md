@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Functional testing of console apps with docker"
+title:      "Functional testing of console apps with Docker"
 date:       2015-07-25 19:53:00
 keywords:   python, docker, pytest
 ---
@@ -44,7 +44,7 @@ def _build_container(tag, dockerfile):
 
 @contextmanager
 def spawn(tag, dockerfile, cmd):
-    """Yields spawn object for `cmd` ran inside a docker container with an
+    """Yields spawn object for `cmd` ran inside a Docker container with an
     image build with `tag` and `dockerfile`. Source root is available in `/src`.
     
     """
