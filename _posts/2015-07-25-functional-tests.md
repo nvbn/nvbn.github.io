@@ -86,7 +86,8 @@ RUN apt-get install -yy python
 
 def test_version():
     """Ensure that app can print current version."""
-    with spawn(*container, u'bash') as proc:
+    tag, dockerfile = container
+    with spawn(tag, dockerfile, u'bash') as proc:
         proc.sendline(u'cd /src')
         proc.sendline(u'pip install .')
         proc.sendline(u'app --version')
