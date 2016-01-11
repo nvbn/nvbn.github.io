@@ -54,8 +54,8 @@ Fuel.post("$url/polling/message/")
 ```
 
 Just promises in comparison with [Clojure core.async](https://github.com/clojure/core.async)
-and [Scala Akka](http://akka.io/) it's a bit way back, it's like writing in pre es7 JavaScript. 
-So why Kotlin? It's simpler to use on Android, struggling with dex errors with Scala isn't fun. Perfomance 
+and [Scala Akka](http://akka.io/) it's a bit way back, it's like writing in pre ES7 JavaScript. 
+So why Kotlin? It's simpler to use on Android, struggling with dex errors with Scala isn't fun. Performance 
 is similar to apps written in Java, sometimes startup time of Clojure apps is annoying. And
 there's far less magic then in [Scala scaloid](https://github.com/pocorall/scaloid) and [Clojure Neko](http://github.com/clojure-android/neko).
 
