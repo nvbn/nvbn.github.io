@@ -11,7 +11,7 @@ gulp.task('serve', () => {
         server: {baseDir: '_site/'},
         open: false
     });
-    gulp.watch('_site/**/*.html').on('change', browserSync.reload);
+    gulp.watch('_site/*/*.html').on('change', browserSync.reload);
 });
 
 gulp.task('default', ['build', 'serve']);
