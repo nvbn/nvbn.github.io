@@ -9,3 +9,4 @@ excerpt_separator: <!-- more -->
 exclude: [node_modules, gulpfile.js]
 gems:
   - jekyll-sitemap
+  - jekyll-paginate
