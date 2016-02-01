@@ -3,6 +3,8 @@ url: https://nvbn.github.io
 permalink: pretty
 paginate: 10
 markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
 excerpt_separator: <!-- more -->
 exclude: [node_modules, gulpfile.js]
 gems:
