@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Fuzzy assertions with cljs.test and core.match"
-date:       2016-02-01 22:28:00
+date:       2016-02-02 00:47:00
 keywords:   clojure, clojurescript
 ---
 
