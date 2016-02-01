@@ -13,7 +13,7 @@ At first let's implement simple version without loops (`[]`),
 and write functions for `+-<>.`. I think it's a good place for using
 a multimethod:
 
-```clojure
+~~~clojure
 (defmulti run-symbol
   (fn [symbol _] symbol))
 
@@ -54,13 +54,13 @@ a multimethod:
        (assoc-in state [:stack pos])))
 
 (defmethod run-symbol :default [_ state] state)
-```
+~~~
 
 Each method gets state and returns new one, state is a map with keys
 `:pos` and `:stack`. And now is simple to write simple translator
 using this methods:
 
-```clojure
+~~~clojure
 (defn compile-simple
   "Creates composition of functions from Brainfuck code." 
   [code]
@@ -73,11 +73,11 @@ using this methods:
   [code]
   ((compile-simple code) {:stack [0]
                           :pos 0}))
-```
+~~~
 
 Let's test it with `Hello World!`:
 
-```clojure
+~~~clojure
 user=> (run-code "+++++++++++++++++++++++++++++++++++++++++++++
   #_=>  +++++++++++++++++++++++++++.+++++++++++++++++
   #_=>  ++++++++++++.+++++++..+++.-------------------
@@ -89,14 +89,14 @@ user=> (run-code "+++++++++++++++++++++++++++++++++++++++++++++
   #_=>  ----.-----------------------.")
 Hello World!
 {:pos 0, :stack [10]}
-```
+~~~
 
 It works, so now it's time to add support of loops, and I guess simplest way to
 do this &ndash; extract code inside `[]` and compile it's separately,
 so now symbol can be a function and when it's a function
 &ndash; it's always loop (a bit hackish), so we need to rewrite `:default`:
 
-```clojure
+~~~clojure
 (defmethod run-symbol :default
   [symbol state]
   (if (fn? symbol)
@@ -105,11 +105,11 @@ so now symbol can be a function and when it's a function
         state
         (recur (symbol state))))
     state))
-```
+~~~
 
 And code of extractor and updated code of the compiler:
 
-```clojure
+~~~clojure
 (defn update-last
   [coll & args]
   (apply update-in coll [(dec (count coll))] args))
@@ -149,17 +149,17 @@ And code of extractor and updated code of the compiler:
   [code]
   ((compile-code code) {:stack [0]
                         :pos 0}))
-```
+~~~
 
 So now we can test it with `Hello World!` with loops:
 
-```clojure
+~~~clojure
 user=> (run-code "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++
   #_=>  .>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.
   #_=>  ------.--------.>+.>.")
 Hello World!
 {:pos 4, :stack [0 87 100 33 10]}
-```
+~~~
 
 Yep, it works!
 

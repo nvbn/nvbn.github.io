@@ -15,7 +15,7 @@ First of all I tried to use [docker-py](https://github.com/docker/docker-py),
 but it's almost impossible to interact with app run in Docker container,
 started from docker-py with pexpect. So I just used Docker binary:
 
-```python
+~~~python
 from contextlib import contextmanager
 import subprocess
 import shutil
@@ -58,7 +58,7 @@ def spawn(tag, dockerfile, cmd):
     finally:
         proc.terminate()
 
-```
+~~~
 
 `_build_container` is a bit tricky, but it's because Docker binary can build an image
 only for file named `Dockerfile`.
@@ -66,17 +66,17 @@ only for file named `Dockerfile`.
 This code can be used for running something inside a Docker container very simple,
 code for printing content of your source root inside the container will be:
 
-```python
+~~~python
 with spawn(u'ubuntu-test', u'FROM ubuntu:latest', u'bash') as proc:
     proc.sendline(u'ls /src')
-```
+~~~
 
 
 Back to testing, if we want to test that some application can
 print version, you can easily write [py.test](http://pytest.org/latest/) test
 like this:
 
-```python
+~~~python
 container = (u'ubuntu-python', u'''
 FROM ubuntu:latest
 RUN apt-get update
@@ -93,7 +93,7 @@ def test_version():
         proc.sendline(u'app --version')
         # Checks that `version:` is in the output:
         assert proc.expect([pexpect.TIMEOUT, u'version:'])
-```
+~~~
 
 You can notice the strange `assert proc.expect([pexpect.TIMEOUT, u'version:'])` construction,
 it works very simple, if there's `version:` in output, `expect` returns `1`, if timeout

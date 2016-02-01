@@ -8,7 +8,7 @@ keywords:   clojurescript, clojurescript.test, travis-ci, StackOverflowError
 Recently i received [strange error](https://travis-ci.org/nvbn/subman/builds/33592994#L705)
 when running clojurescript tests on travis-ci:
 
-```bash
+~~~bash
 $ lein2 cljsbuild test
 ...
 Compiling "target/cljs-test.js" failed.
@@ -27,11 +27,11 @@ Exception in thread "main" java.lang.StackOverflowError, compiling:(/tmp/form-in
 	at clojure.main.main(main.java:37)
 Caused by: java.lang.StackOverflowError
 ...
-```
+~~~
 But locally all worked ok. And i found simple solution &ndash; increase thread stack size up to 16mb
 by adding this line to my [project.clj](https://github.com/nvbn/subman/blob/bcc276d1cb0f088657a5f4d55ad4195d94900eb6/project.clj#L65):
 
-```clojure
+~~~clojure
 :jvm-opts ["-Xss16m"]
-```
+~~~
 As a result travis-ci build [succeeded](https://travis-ci.org/nvbn/subman/builds/36685603).

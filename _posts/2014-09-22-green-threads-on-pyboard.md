@@ -12,7 +12,7 @@ And i developed [microasync](https://github.com/nvbn/microasync) &mdash; library
 
 Little example, code for toggling leds concurrently:
 
-```python
+~~~python
 from microasync.async import loop, coroutine, Delay
 import pyb
 
@@ -31,7 +31,7 @@ toggle_led_on_interval(4, 2)
 
 # start main loop:
 loop()
-```
+~~~
 
 And result:
 

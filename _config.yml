@@ -1,9 +1,8 @@
-highlighter: pygments
 name: nvbn blog
 url: https://nvbn.github.io
 permalink: pretty
 paginate: 10
-markdown: redcarpet
+markdown: kramdown
 excerpt_separator: <!-- more -->
 exclude: [node_modules, gulpfile.js]
 gems:

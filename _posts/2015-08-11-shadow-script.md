@@ -15,7 +15,7 @@ But it was very limited, supported only calls and attributes changes, so it wasn
 to render something on offscreen canvas or load some bitmap and draw. So I rethought
 and came up with a concept of Shadow Script, it's a simple DSL, that has only a few constructions:
 
-```clojure
+~~~clojure
 ; Create instance of `cls` with `args` (list of values or vars) and put result in
 ; variables hash-map with key `result-var`:
 [:new result-var cls args]
@@ -26,31 +26,31 @@ and came up with a concept of Shadow Script, it's a simple DSL, that has only a 
 ; Call method `method` of `var` with `args` (list of values or vars) and put result in
 ; variables hash-map with key `result-var`:
 [:call result-var var method args]
-```
+~~~
 
 It will be painful to write this constructions manually, so I implemented `new`,
 `..` and `set!` macros. So code looks like an ordinary Clojure code. For example &mdash;
 a code for drawing a red rectangle:
 
-```clojure
+~~~clojure
 (let [canvas (new Canvas)
       context (.. canvas (getContext "2d"))]
   (set! (.. canvas -width) 200)    
   (set! (.. canvas -height) 200)
   (set! (.. context -fillStyle) "red")
   (.. context (fillRect 0 0 100 100))) 
-```
+~~~
 
 Will be translated to:
 
-```clojure
+~~~clojure
 [[:new "G_01" :Canvas []]
  [:call "G_02" "G_01" "getContext" ["2d"]]
  [:set "G_01" "width" 200]
  [:set "G_01" "height" 200]
  [:set "G_02" "fillStyle" "red"]
  [:call "G_03" "G_02" "fillRect" [0 0 100 100]]]
-```
+~~~
 
 <iframe src="/assets/rerenderer_2/index.html#1" width="100%" height="130" frameBorder="0" scrolling="no"></iframe>
 <a href="/assets/rerenderer_2/index.html#1" target="_blank">(open on a new page)</a>
@@ -60,7 +60,7 @@ and this is significant, because we need to implement interpreter
 three or more times: for browsers in ClojureScript, for Android in Java (or Kotlin?) and
 for iOS in Objective-C (or Swift). And interpreter in ClojureScript is basically just: 
 
-```clojure
+~~~clojure
 (defn interprete-line
   "Interpretes a single `line` of script and returns changed `vars`."
   [vars line]
@@ -75,7 +75,7 @@ for iOS in Objective-C (or Swift). And interpreter in ClojureScript is basically
   "Interpretes `script` and returns hash-map with vars."
   [script]
   (reduce interprete-line {} script))
-```
+~~~
 
 [(full code)](https://github.com/nvbn/rerenderer/blob/e0d90c4b733be1445302d146fed103d2c975c371/src/rerenderer/browser.cljs#L40)
 
@@ -83,7 +83,7 @@ Another cool stuff is that we can construct a dependencies tree and recreate onl
 canvases/bitmaps/etc. So, for example we need to draw a red rectangle on another rectangle,
 which color stored in a state:
 
-```clojure
+~~~clojure
 (defn draw-box
   [color w h]
   (let [canvas (new Canvas)
@@ -98,11 +98,11 @@ which color stored in a state:
       another-box (draw-box (:color state) 800 600)
       another-box-ctx (.. another-box (getContext "2d"))]
   (.. another-box-ctx (drawImage red-box 50 50)))
-```
+~~~
 
 With state `{:color "yellow"}` script we'll be:
 
-```clojure
+~~~clojure
 [[:new "G_01" :Canvas []]
  [:call "G_02" "G_01" "getContext" ["2d"]]
  [:set "G_01" "width" 50]
@@ -117,14 +117,14 @@ With state `{:color "yellow"}` script we'll be:
  [:call "G_06" "G_05" "fillRect" [0 0 800 600]]
  [:call "G_07" "G_04" "getContext" ["2d"]]
  [:call "G_08" "G_07" "drawImage" ["G_01" 50 50]]]
-```
+~~~
 
 <iframe src="/assets/rerenderer_2/index.html#2" width="100%" height="130" frameBorder="0" scrolling="no"></iframe>
 <a href="/assets/rerenderer_2/index.html#2" target="_blank">(open on a new page)</a>
 
 And with state `{:color "green"}`:
 
-```clojure
+~~~clojure
 [[:new "G_01" :Canvas []]
  [:call "G_02" "G_01" "getContext" ["2d"]]
  [:set "G_01" "width" 50]
@@ -139,7 +139,7 @@ And with state `{:color "green"}`:
  [:call "G_06" "G_05" "fillRect" [0 0 800 600]]
  [:call "G_07" "G_04" "getContext" ["2d"]]
  [:call "G_08" "G_07" "drawImage" ["G_01" 50 50]]]
-```
+~~~
 
 <iframe src="/assets/rerenderer_2/index.html#3" width="100%" height="130" frameBorder="0" scrolling="no"></iframe>
 <a href="/assets/rerenderer_2/index.html#3" target="_blank">(open on a new page)</a>

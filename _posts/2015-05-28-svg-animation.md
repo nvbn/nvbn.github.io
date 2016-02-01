@@ -16,7 +16,7 @@ I'll use not just React, but Om with [om-tools](https://github.com/Prismatic/om-
 For example, what if we want to draw a rotating red rectangle? Looks like we just
 need to change `transform` attribute of the rectangle every `n` milliseconds:
 
-```clojure
+~~~clojure
 (defcomponent rotated-rect
   [{:keys [x y width height]} owner]
   (init-state [_] {:angle 0})
@@ -45,7 +45,7 @@ need to change `transform` attribute of the rectangle every `n` milliseconds:
                                      :y 50
                                      :width 100
                                      :height 100}))))
-```
+~~~
 
 Isn't it simple? And it works:
 
@@ -53,7 +53,7 @@ Isn't it simple? And it works:
 
 What if we want to move the rectangle across the scene? We can do it without changing `rotated-rect`:
 
-```clojure
+~~~clojure
 (defcomponent scene-2
   [_ owner]
   (init-state [_] {:x 0})
@@ -69,7 +69,7 @@ What if we want to move the rectangle across the scene? We can do it without cha
                                      :y 50
                                      :width 100
                                      :height 100}))))
-```
+~~~
 
 And the rectangle continued to rotate:
 
@@ -79,7 +79,7 @@ Sprites are very useful for animation, and in SVG it can be used with combinatio
 and `image` tags, but both of them doesn't supported by Om (because not supported by React).
 But we can use ugly `dangerouslySetInnerHTML` attribute:
 
-```clojure
+~~~clojure
 (defcomponent sprite
   [{:keys [x y img-width img-height scale sprite-x sprite-y sprite-w sprite-h href]} _]
   (render-state [_ _]
@@ -113,7 +113,7 @@ But we can use ugly `dangerouslySetInnerHTML` attribute:
                                :href "mario.png"
                                :sprite-x 214
                                :sprite-y 240}))))
-```
+~~~
 
 And render Mario from the sprite:
 
@@ -124,7 +124,7 @@ Assume that he can stand, run and jump to left and right, and running is an anim
 of changing three images. So Mario component should render himself depending on state
 and direction:
 
-```clojure
+~~~clojure
 (defn mario-sprite
   [& opts]
   (om/build sprite (assoc (apply hash-map opts)
@@ -185,7 +185,7 @@ and direction:
              (om/build mario {:x 10 :y 100 :state :stand :direction :left})
              (om/build mario {:x 60 :y 100 :state :run :direction :left})
              (om/build mario {:x 110 :y 100 :state :jump :direction :left}))))
-```
+~~~
 
 It works and now we can see Mario rendered with all available states and directions:
 
@@ -194,7 +194,7 @@ It works and now we can see Mario rendered with all available states and directi
 So let's write a simple animation with Mario: he jumps, goes to the right end, jumps,
 goes to the left end and repeats. With `core.async` it's very simple to write "scenario" for this:
 
-```clojure
+~~~clojure
 (defcomponent scene-5
   [_ owner]
   (init-state [_] {:mario-state :stand
@@ -258,7 +258,7 @@ goes to the left end and repeats. With `core.async` it's very simple to write "s
                         :y 70
                         :width 400
                         :height 20}))))
-```
+~~~
 
 It's simple and it works:
 

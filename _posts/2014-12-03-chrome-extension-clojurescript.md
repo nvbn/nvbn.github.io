@@ -27,7 +27,7 @@ in the Chrome extension, because of `goog.require` way of loading dependencies. 
 we should to build separate compiled js files for each background/content/options/etc
 "pages". So my `cljs-build` configuration:
 
-```clojure
+~~~clojure
 {:builds {:background {:source-paths ["src/textarea_to_code_editor/background/"]
                        :compiler {:output-to "resources/background/main.js"
                                   :output-dir "resources/background/"
@@ -40,7 +40,7 @@ we should to build separate compiled js files for each background/content/option
                                :source-map "resources/content/main.js.map"
                                :optimizations :whitespace
                                :pretty-print true}}}}
-```
+~~~
 
 If you want to use `:optimizations :advanced`, you can download externs for
 Chrome API from [github](https://github.com/google/closure-compiler/blob/master/contrib/externs/chrome_extensions.js).
@@ -51,25 +51,25 @@ From a first look using of Chrome API from ClojureScript is a bit uncomfortable,
 but with `..` macro it looks not worse than in JavaScript. For example,
 adding listener to runtime messages in js:
 
-```js
+~~~js
 chrome.runtime.onMessage.addListener(function(msg){
     console.log(msg);
 });
-```
+~~~
 
 And in ClojureScript:
 
-```clojurescript
+~~~clojurescript
 (.. js/chrome -runtime -onMessage (addListener #(.log js/console %)))
-```
+~~~
 
 **Testing**
 
 Because we can't use Chrome API in tests I created a little function for detecting if it available:
 
-```clojurescript
+~~~clojurescript
 (defn available? [] (aget js/window "chrome"))
-```
+~~~
 
 And run all extension bootstrapping code inside of `(when (available?) ...)`. So
 now it's simple to use `with-redefs` and
@@ -78,7 +78,7 @@ for mocking Chrome API.
 
 For running test I used [clojurescript.test](https://github.com/cemerick/clojurescript.test), my config:
 
-```clojurescript
+~~~clojurescript
 {:builds {:test {:source-paths ["src/" "test/"]
                  :compiler {:output-to "target/cljs-test.js"
                             :optimizations :whitespace
@@ -90,7 +90,7 @@ For running test I used [clojurescript.test](https://github.com/cemerick/clojure
                          "resources/components/ace-builds/src/theme-monokai.js"
                          "resources/components/ace-builds/src/ext-modelist.js"
                          "target/cljs-test.js"]}}
-```
+~~~
 
 **Benefits**
 
@@ -99,7 +99,7 @@ because it's always turns into huge callback hell. But [core.async](https://gith
 (and a bit of [core.match](https://github.com/clojure/core.match)) can save us,
 for example, handling messages on content side:
 
-```clojurescript
+~~~clojurescript
 (go-loop []
   (match (<! msg-chan)
     [:populate-context-menu data sender-chan] (h/populate-context-menu! data
@@ -110,7 +110,7 @@ for example, handling messages on content side:
     [:update-used-modes mode _] (h/update-used-modes! storage mode)
     [& msg] (println "Unmatched message:" msg))
   (recur))
-```
+~~~
 
 Sources of [content side](https://github.com/nvbn/textarea-to-code-editor/blob/master/src/textarea_to_code_editor/content/chrome.cljs)
 and [backend side](https://github.com/nvbn/textarea-to-code-editor/blob/master/src/textarea_to_code_editor/background/chrome.cljs)

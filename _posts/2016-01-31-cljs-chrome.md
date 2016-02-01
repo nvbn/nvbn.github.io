@@ -18,17 +18,17 @@ It's nice, but it doesn't work with `print`/`println`, only with `console.log`. 
 data structures passed to `console.log`. `cljs.test` uses `print` and formatters for printing expected/actual. So
 we need to hack `cljs.test` a bit. Assume your test runner looks like:
  
-```clojure
+~~~clojure
 (ns ^:figwheel-always rerenderer.test
   (:require [cljs.test :refer-macros [run-all-tests]]))
 
 (enable-console-print!)
 (run-all-tests #"rerenderer\..*-test")
-```
+~~~
 
 And we need to redefine `cljs/test.print-comparison`:
 
-```clojure
+~~~clojure
 (ns ^:figwheel-always rerenderer.test
   (:require [cljs.test :refer-macros [run-all-tests] :as test]
             [devtools.core :as devtools]))
@@ -43,7 +43,7 @@ And we need to redefine `cljs/test.print-comparison`:
 
 (with-redefs [test/print-comparison print-comparison]
   (run-all-tests #"rerenderer\..*-test"))
-```
+~~~
 
 And that's all, example output:
 

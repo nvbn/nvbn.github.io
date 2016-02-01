@@ -11,19 +11,19 @@ have a method for doing that, it has something similar &ndash; `storage_usage`, 
 this attribute [contains size of index in bytes](https://cloud.google.com/appengine/docs/python/search/indexclass#Index_storage_usage).
 But the API provides method for receiving ids of documents, so I've tried:
 
-```python
+~~~python
 >>> len(index.get_range(ids_only=True))
 100
 >>> len(index.get_range(ids_only=True, limit=1000))
 1000
 >>> len(index.get_range(ids_only=True, limit=1001))
 ValueError: limit, 1001 must be <= 1000
-```
+~~~
 
 And another pitfall &ndash; `get_range` [couldn't return more than 1000 ids](https://cloud.google.com/appengine/docs/python/search/#Python_Index_schemas).
 So I've tried to run it in cycle:
 
-```python
+~~~python
 def calculate_count():
     # Starts with 1 because in other iteration new range will
     # start with last item from previous range:
@@ -43,12 +43,12 @@ def calculate_count():
 
 >>> calculate_count()
 DeadlineExceededError
-```
+~~~
 
 Yep, It takes more than 60 seconds. But then I've tried to run each iteration
 in deferred and write result to memcahe:
 
-```python
+~~~python
 def calculate_count(start_id=None, result=1):
     if start_id is None:
         memcache.delete('RESULT')
@@ -67,5 +67,5 @@ def calculate_count(start_id=None, result=1):
 # Wait few minutes...
 >>> memcache.get('RESULT')
 1398762
-```
+~~~
 And It works!

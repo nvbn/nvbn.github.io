@@ -26,7 +26,7 @@ params when without Docker.
 It's easier to show it in examples. So, first of all, just test some app `--version`
 argument inside an Ubuntu container:
 
-```python
+~~~python
 import pytest
 
 
@@ -50,12 +50,12 @@ def test_version(ubuntu, TIMEOUT):
     # when timeout came first, `expect` returns 0, when app version - 1
     assert ubuntu.expect([TIMEOUT, u'The App 2.9.1'])
 
-```
+~~~
 
 Looks simple. But sometimes we need to run tests in different environments, for example &mdash;
 with different Python versions. It can be easily done by just changing `ubuntu` fixture:
 
-```python
+~~~python
 @pytest.fixture(params=[2, 3])
 def ubuntu(request, spawnu):
     python_version = request.param
@@ -70,7 +70,7 @@ def ubuntu(request, spawnu):
     # Your source root is available in `/src`
     proc.sendline(u'pip{} install /src'.format(python_version))
     return proc
-```
+~~~
 
 And sometimes we need to run tests in Docker-less environment, for example &mdash;
 in [Travis CI container-based infrastructure](http://docs.travis-ci.com/user/workers/container-based-infrastructure/).
@@ -79,7 +79,7 @@ run tests for more than one environment in a single Travis CI run, and we don't 
 to make some installation steps. So there's place for `once_without_docker`
 mark and `run_without_docker` fixture, test with them will be:
 
-```python
+~~~python
 import pytest
 
 
@@ -108,17 +108,17 @@ def test_version(ubuntu, TIMEOUT):
     # when timeout came first, `expect` returns 0, when app version - 1
     assert ubuntu.expect([TIMEOUT, u'The App 2.9.1'])
 
-```
+~~~
 
 Another often requirement &mdash; skip some tests without docker, some destructive tests.
 It can be done with `skip_without_docker` mark:
 
-```python
+~~~python
 @pytest.mark.skip_without_docker
 def test_broke_config(ubuntu, TIMEOUT):
     ubuntu.sendline(u'{invalid} > ~/.app/config.json')
     ubuntu.sendline(u'app')
     assert ubuntu.expect([TIMEOUT, u'Config was broken!'])
-```
+~~~
 
 [Source code of the plugin.](https://github.com/nvbn/pytest-docker-pexpect)

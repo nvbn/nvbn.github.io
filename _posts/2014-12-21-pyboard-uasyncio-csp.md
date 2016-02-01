@@ -22,7 +22,7 @@ for interacting with my OLED display and [lib for working with ultrasonic sensor
 First of all I created decorator for simplifying creating generators which returns a queue and
 make all interaction through it:
 
-```python
+~~~python
 class OnlyChanged(Queue):
     def __init__(self, *args, **kwargs):
         self._last_val = None
@@ -41,11 +41,11 @@ def chan(fn):
         get_event_loop().call_soon(fn(q, *args, **kwargs))
         return q
     return wrapper
-```
+~~~
 
 So now it's simple to write generator, which prints to display data received from the queue:
 
-```python
+~~~python
 @chan
 def get_display(q, *args, **kwargs):
     display = Display(*args, **kwargs)
@@ -58,13 +58,13 @@ def get_display(q, *args, **kwargs):
 ...                       height=64,
 ...                       external_vcc=False)
 >>> yield from display.put('Hello world!')
-```
+~~~
 
 ![oled display](/assets/pyboard_csp_display.jpg)
 
 And generator for the ultrasonic sensor which puts values to the queue:
 
-```python
+~~~python
 @chan
 def get_ultrasonic(q, *args, **kwargs):
     ultrasonic = Ultrasonic(*args, **kwargs)
@@ -75,11 +75,11 @@ def get_ultrasonic(q, *args, **kwargs):
 >>> ultrasonic = get_ultrasonic('X1', 'X2')
 >>> yield from ultrasonic.get()
 28.012
-```
+~~~
 
 Similar generator for the pyboard gyro sensor:
 
-```python
+~~~python
 @chan
 def get_gyro(q):
     accel = pyb.Accel()
@@ -90,11 +90,11 @@ def get_gyro(q):
 >>> gyro = get_gyro()
 >>> yield from gyro.get()
 (12, 9, 72)
-```
+~~~
 
 And by combining all of them it's very similar to write program for expected device:
 
-```python
+~~~python
 def main():
     display = get_display(pinout={'sda': 'Y10',
                                   'scl': 'Y9'},
@@ -114,7 +114,7 @@ def main():
 >>> loop = get_event_loop()
 >>> loop.call_soon(main())
 >>> loop.run_forever()
-```
+~~~
 
 So the result code is very simple, all components are decoupled and it's easy to test.
 Video of result:

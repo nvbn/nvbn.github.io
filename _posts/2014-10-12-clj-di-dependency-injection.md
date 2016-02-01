@@ -17,31 +17,31 @@ Dependency can be registered and received using keyword.
 Library has two ways for registering dependencies. Permanently with `register!`
 (i use it in `lein-ring` `:init` for creating db connections):
 
-```clojure
+~~~clojure
 (register! :db (Database.)
            :logger (get-logger))
-```
+~~~
 
 And for code block with `with-registered` (i use it in tests for registering mocks):
 
-```clojure
+~~~clojure
 (with-registered [:db (Database.)
                   :logger (get-logger)]
   ...)
-```
+~~~
 
 And two ways for receiving dependency. With `get-dep` function (useful for receiving single dependency):
 
-```clojure
+~~~clojure
 (get-dep :db)
-```
+~~~
 
 And with `let-deps` macro (useful for receiving more than one dependency):
 
-```clojure
+~~~clojure
 (let-deps [conn :db
            log :logger]
   ..)
-```
+~~~
 
 You can see more on [github](https://github.com/nvbn/clj-di/) and in [documentation](http://nvbn.github.io/clj-di/).

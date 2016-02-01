@@ -14,7 +14,7 @@ concurrently, so first of all we need to develop simple REPL with which we can d
 And for making it more interesting &ndash; make this REPL to work through
 bluetooth:
  
-```python
+~~~python
 from pyb import UART
 
 uart = UART(1)
@@ -51,31 +51,31 @@ def iteration():
 while True:
     handle_repl()
     iteration()
-```
+~~~
 
 So now we can test it:
 
-```bash
+~~~bash
 ➜ echo "1 + 1" > /dev/rfcomm1
 ➜ head -n 1 /dev/rfcomm1
 2
-```
+~~~
 
 It works, so let's try to override `iteration` for sending `Hello World!`
 on each iteration to us through bluetooth:
 
-```bash
+~~~bash
 ➜ echo "globals()['iteration'] = lambda: uart.write('Hello World\n')" > /dev/rfcomm1
 ➜ cat /dev/rfcomm1
 Hello World
 Hello World
 ^C%  
-```
+~~~
 
 Or we can do something more practical &ndash; send measurements from
 accel sensors:
 
-```bash
+~~~bash
 ➜ echo "from pyb import Accel
 
 def _send_accel():
@@ -90,13 +90,13 @@ globals()['iteration'] = _send_accel" > /dev/rfcomm1
 (6, -5, 91)
 (5, -4, 92)
 ^C%
-```
+~~~
 
 That's not all, we can also modify the way that REPL works,
 for example &ndash; display all REPL commands/results on
 little screen ([ssd1306 module](https://gist.github.com/nvbn/ef690c341dcea667ec8b)):
 
-```bash
+~~~bash
 ➜ echo "from ssd1306 import Display
 
 display = Display(pinout={'sda': 'Y10',
@@ -118,7 +118,7 @@ globals()['exec_command'] = wrapper" > /dev/rfcomm1
 ➜ echo "b = 2" > /dev/rfcomm1
 ➜ echo "a + b" > /dev/rfcomm1
 ➜ echo "[x ** 2 for x in range(a + b)]" > /dev/rfcomm1 
-```
+~~~
 
 And it works:
 

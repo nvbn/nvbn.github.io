@@ -21,18 +21,18 @@ it's a very great library, it makes work with android API less painful and makes
 Developing in scala for android is fun, but I stumbled over one not straightforward problem
 (perhaps it's straightforward for mature android developers) &mdash; compilation fails with:
 
-```
+~~~
 [info] Generating classes.dex
 [warn] 
 [warn] trouble writing output: Too many method references: 181232; max is 65536.
 [warn] You may try using --multi-dex option.
 [warn] References by package:
 ...
-```
+~~~
 
 And the simple solution &mdash; change my proguard config to:
 
-```
+~~~
 -dontoptimize
 -dontobfuscate
 -dontpreverify
@@ -41,7 +41,7 @@ And the simple solution &mdash; change my proguard config to:
     public protected *;
 }
 -ignorewarnings
-```
+~~~
 
 Another minus it's compile time. My simple application compiles
 around 1.5 minutes, tests &mdash; around 1 minute. But I found that incremental compilation

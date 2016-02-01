@@ -32,9 +32,9 @@ some magic for getting the broken command, executing fixed command and
 updating the history.
 For example for zsh it looks like:
 
-```bash
+~~~bash
 TF_ALIAS=fuck alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
-```
+~~~
 
 Back to pipeline, for `thefuck` that runs inside the alias it'll be:
 
@@ -117,7 +117,7 @@ for reading key on non-windows and without curses. And we can't use
 curses here because of alias specifics. But it's easy to
 write clone of windows-specific `msvrt.getch`:
 
-```python
+~~~python
 import tty
 import termios
 
@@ -133,7 +133,7 @@ def getch():
         return ch
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old)
-```
+~~~
 
 Also UI requires properly sorted list of corrected commands, so
 all rules should be matched before and it can took a long time.
@@ -175,7 +175,7 @@ it'll fall apart on every change. For unit tests here's used
 of tests for matching and checking corrected command, so
 parametrized tests is very useful, typical test looks like:
 
-```python
+~~~python
 import pytest
 from thefuck.rules.cd_mkdir import match, get_new_command
 from tests.utils import Command
@@ -188,7 +188,7 @@ from tests.utils import Command
     Command(script='cd foo/bar/baz', stderr='cd: can\'t cd to foo/bar/baz')])
 def test_match(command):
     assert match(command)
-```
+~~~
 
 Also The Fuck works with various amount of shells and every shell
 requires specific aliases. And for testing that all works we need functional

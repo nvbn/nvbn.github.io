@@ -13,7 +13,7 @@ with it, and we can use [core.match](https://github.com/clojure/core.match) for 
 in this "object".
 Yep, there will be something like Erlang actors:
 
-```clojure
+~~~clojure
 (require '[clojure.core.async :refer [go go-loop chan <! >! >!! <!!]])
 (require '[clojure.core.match :refer [match]])
 
@@ -25,7 +25,7 @@ Yep, there will be something like Erlang actors:
         [:say! x] (println "Dog said:" x))
       (recur))
     messages))
-```
+~~~
 
 Here I've just created channel and in the `go-loop` matched received messages from them with
 registered messages patterns.
@@ -34,18 +34,18 @@ Format of messages is `[:name & args]`.
 
 We can easily test `dog` object by putting message in the channel:
 
-```clojure
+~~~clojure
 user=> (>!! dog [:bark!])
 # Bark! Bark!
 
 user=> (>!! dog [:say! "Hello world!"])
 
 # Dog said: Hello world!
-```
+~~~
 
 Looks awesome, but maybe we should add a state?  It's pretty simple:
 
-```clojure
+~~~clojure
 (def stateful-dog
   (let [calls (chan)]
     (go-loop [state {:barked 0}]
@@ -56,12 +56,12 @@ Looks awesome, but maybe we should add a state?  It's pretty simple:
                [:how-many-barks?] (do (println (:barked state))
                                       state))))
     calls))
-```
+~~~
 I've just put default state in the bindings for `go-loop` and
 `recur` it with new state after processing messages.
 And we can test it:
 
-```clojure
+~~~clojure
 user=> (>!! stateful-dog [:bark!])
 # Bark! Bark!
 
@@ -76,11 +76,11 @@ user=> (>!! stateful-dog [:bark!])
 
 user=> (>!! stateful-dog [:how-many-barks?])
 # 3
-```
+~~~
 
 Great, but what if we want to receive result of the method? It's simple too:
 
-```clojure
+~~~clojure
 (def answering-dog
   (let [calls (chan)]
     (go-loop [state {:barked 0}]
@@ -91,12 +91,12 @@ Great, but what if we want to receive result of the method? It's simple too:
                [:how-many-barks? result] (do (>! result (:barked state))
                                              state))))
     calls))
-```
+~~~
 
 I've just set a channel as a last argument of the message and put result in it.
 It's not that simple to use like previous examples, but it's ok:
 
-```clojure
+~~~clojure
 user=> (>!! answering-dog [:bark!  (chan)])
 # Bark! Bark!
 
@@ -107,11 +107,11 @@ user=> (let [result (chan)]
   #_=>   (>!! answering-dog [:how-many-barks? result])
   #_=>   (<!! result))
 2
-```
+~~~
 
 Last call looks too complex, let's add a few helpers to make it easier:
 
-```clojure
+~~~clojure
 (defn call
   [obj & msg]
   (go (let [result (chan)]
@@ -121,11 +121,11 @@ Last call looks too complex, let's add a few helpers to make it easier:
 (defn call!!
   [obj & msg]
   (<!! (apply call obj msg)))
-```
+~~~
 
 `call!!` should be used only outside of `go-block`, `call` &mdash; in combination with `<!` and `<!!`. Let's look to them in action:
 
-```clojure
+~~~clojure
 user=> (call!! answering-dog :how-many-barks?)
 2
 
@@ -137,7 +137,7 @@ user=> (call!! answering-dog :set-barks!)
 
 user=> (call!! answering-dog :how-many-barks?)
 # ...
-```
+~~~
 
 So now we have a problem, when error happens in a object &ndash; object dies and no longer
 sends responses to messages. So we should add `try/except` to all methods, better to use macros for
@@ -151,7 +151,7 @@ Yep, you can notice that this looks like Maybe/Option monad.
 
 So let's write macroses:
 
-```clojure
+~~~clojure
 (defn ok! [ch val] (go (>! ch [:ok val])))
 
 (defn error! [ch reason] (go (>! ch [:error reason])))
@@ -174,14 +174,14 @@ So let's write macroses:
   [pattern `(try (do ~@body)
                  (catch Exception e#
                    (error! ~(last pattern) e#)))])
-```
+~~~
 
 Macro `object` can be used for creating objects and macro `method` &mdash; for defining methods inside the object.
 Here you could notice that `[& msg#]` works exactly like `method_missing` in Ruby.
 
 So now we can create objects using this macroses:
 
-```clojure
+~~~clojure
 (defn make-cat
   [name]
   (object [state {:age 10
@@ -197,13 +197,13 @@ So now we can create objects using this macroses:
       state)))
 
 (def cat (make-cat "Simon"))
-```
+~~~
 
 We created object `cat` with methods `get-name`, `set-name!` and `make-older!`, `make-cat` is a
 improvised constructor. This object can be used like all previous objects, but in combination
 with `core.match` it'll be more useful:
 
-```clojure
+~~~clojure
 user=> (match (call!! cat :get-name)
   #_=>   [:ok val] (println val))
 # Simon
@@ -224,6 +224,6 @@ user=> (match (call!! cat :make-older!)
 user=> (match (call!! cat :i-don't-know-what)
   #_=>   [:error _] (println "Failed"))
 # Failed
-```
+~~~
 
 Looks perfect! But that's not all, later I'll implement a inheritance on top of this mess.

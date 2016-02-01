@@ -10,7 +10,7 @@ statement in python using context manager.
 
 First i invented simple realisation, where we manually pass `locals`:
 
-```python
+~~~python
 from contextlib import contextmanager
 
 
@@ -20,11 +20,11 @@ def let(locals_, **bindings):
     locals_.update(bindings)
     yield
     locals_.update(original)
-```
+~~~
 
 And usage:
 
-```python
+~~~python
 >>> a = 1
 >>> b = 2
 >>> with let(locals(), a=10, b=20):
@@ -34,11 +34,11 @@ And usage:
 >>> print(a, b)  # outside of `let` scope
 (1, 2)
 
-```
+~~~
 
 Looks ugly. But we can use little piece of magic with `inspect`. We can get outer frame and get his `locals`
 
-```python
+~~~python
 from contextlib import contextmanager
 from inspect import currentframe, getouterframes
 
@@ -51,11 +51,11 @@ def let(**bindings):
     locals_.update(bindings)
     yield
     locals_.update(original)
-```
+~~~
 
 Now we don't need to pass `locals` explicitly:
 
-```python
+~~~python
 >>> a = 3
 >>> b = 4
 >>> with let(a=33, b=44):
@@ -64,4 +64,4 @@ Now we don't need to pass `locals` explicitly:
 (33, 44)
 >>> print(a, b)
 (3, 4)
-```
+~~~

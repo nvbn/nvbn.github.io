@@ -9,7 +9,7 @@ Lately i worked a lot with clojure and core.async, and i was very impressed with
 Mostly because it saves me from js callback hell.
 For example, js code with sequential http requests (heh, with promises it's less ugly):
 
-```javascript
+~~~javascript
 $http.get('/users/').then(function(data){
     return $http.post('/user-data/', data.items);
 }).then(function(){
@@ -17,14 +17,14 @@ $http.get('/users/').then(function(data){
 }).then(function(posts){
     console.log(posts);
 });
-```
+~~~
 With clojurescript and core.async it will be:
 
-```clojure
+~~~clojure
 (go (let [users (<! (http/get "/users/"))]
        (<! (http/post "/user-data/" (:items users)))
        (js/console.log (<! (http/get "/posts/")))))
-```
+~~~
 Clojurescript code looks more readable and simple.
 
 And i developed CSP for micropython in my [microasync](https://github.com/nvbn/microasync) library.
@@ -32,7 +32,7 @@ And i developed CSP for micropython in my [microasync](https://github.com/nvbn/m
 Example application &mdash; servo should rotate to angle which equal to
 X angle of accelerometer, and user can start/stop app with button:
 
-```python
+~~~python
 from microasync.device import get_servo, get_accel, get_switch
 from microasync.async import coroutine, loop, Delay, select
 
@@ -60,6 +60,6 @@ def servo_coroutine():
 servo_coroutine()
 loop()
 
-```
+~~~
 And recorded on google glass (yep, i bought it few days ago) video of result:
 <iframe width="766" height="430" src="//www.youtube.com/embed/CmgqT2OMxOA" frameborder="0" allowfullscreen></iframe>

@@ -12,7 +12,7 @@ callbacks with them, and use something like
 
 And we can, let's look at this little helper function:
 
-```coffeescript
+~~~coffeescript
 gen = (fn) ->
   new Promise (resolve, reject) ->
     generator = fn()
@@ -32,11 +32,11 @@ gen = (fn) ->
         reject "Value isn't a promise!"
 
     handlePromise generator.next()
-```
+~~~
 
 With it code like:
 
-```coffeescript
+~~~coffeescript
 $http.get('/users/').then ({data}) ->
   doSomethingWithUsers data.users
   $http.get '/posts/'
@@ -46,11 +46,11 @@ $http.get('/users/').then ({data}) ->
   doSomethingWithPosts data.posts
 , (err) ->
   console.log "Can't receive posts", err
-```
+~~~
 
 Can be transformed to something like:
 
-```coffeescript
+~~~coffeescript
 gen ->
   try
     {data: usersData} = yield $http.get '/users/'
@@ -65,11 +65,11 @@ gen ->
     console.log "Can't receive posts", err
     return
   doSomethingWithPosts postsData.posts
-```
+~~~
 
 Isn't it cool? But more, result of `gen` is a promise, so we can write something like:
 
-```coffeescript
+~~~coffeescript
 getUsers = (url) -> gen ->
   {data: {users}} = yield $http.get(url)
   users.map prepareUser
@@ -88,7 +88,7 @@ gen ->
 
    doSomethingWithUsers users
    doSomethingWithPosts posts
-```
+~~~
 
 So, what `gen` do:
 

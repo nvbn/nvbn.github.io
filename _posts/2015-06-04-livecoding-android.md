@@ -30,16 +30,16 @@ And it's simple to configure. First of all you need to changed method `getUrl`
 from `BockoAndroid/app/src/main/java/com/nvbn/bockoandroid/BockoView.java`
 to something like this, but with your ip address:
 
-```java
+~~~java
 String getUrl() {
     return "http://192.168.0.107:3449/";
 }
-```
+~~~
 
 And write your ip address in `:websocket-host` in `:figwheel` section of
 `:cljsbuild` build configuration, so your `project.clj` will be like: 
 
-```clojure
+~~~clojure
 (defproject bocko-example "0.1.0-SNAPSHOT"
             :license {:name "Eclipse Public License"
                       :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -58,6 +58,6 @@ And write your ip address in `:websocket-host` in `:figwheel` section of
                                                    :source-map true
                                                    :optimizations :none
                                                    :pretty-print false}}}})
-```
+~~~
 
 [Bocko on Android github.](https://github.com/nvbn/bocko-android)

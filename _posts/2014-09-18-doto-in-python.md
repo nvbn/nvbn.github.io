@@ -10,27 +10,27 @@ When i writing code in clojure i can use good macro &ndash; [doto](http://clojur
 With whom python code like:
 
 
-```python
+~~~python
 window = QMainWindow()
 window.setTitle(TITLE)
 window.setWindowFlags(Qt.FramelessWindowHint)
 window.setAttribute(Qt.WA_TransparentForMouseEvents, True)
 window.show()
-```
+~~~
 
 can be translated in clojure code like:
 
-```clojure
+~~~clojure
 (doto (QMainWindow.)
       (.setTitle title)
       (.setWindowFlags Qt/FramelessWindowHint)
       (.setAttribute Qt/WA_TransparentForMouseEvents True)
       (.show))
-```
+~~~
 
 And i wrote hackish class for doing something similar in python.
 
-```python
+~~~python
 from functools import partial
 
 
@@ -44,15 +44,15 @@ class DoTo(object):
 
     def __getattr__(self, item):
         return partial(self._do, item)
-```
+~~~
 
 With method chaining we can emulate behavior of clojure `doto`:
 
-```python
+~~~python
 window = QMainWindow()
 DoTo(window)\
     .setTitle(TITLE)\
     .setWindowFlags(Qt.FramelessWindowHint)\
     .setAttribute(Qt.WA_TransparentForMouseEvents, True)\
     .show()
-```
+~~~

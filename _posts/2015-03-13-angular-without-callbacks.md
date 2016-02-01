@@ -10,20 +10,20 @@ CoffeeScript instead of JavaScript, because syntax of
 JS generators is too bloated, especially with decorators and
 inside of some functions:
 
-```javascript
+~~~javascript
 function(){
     return gen(function*(){
         yield something;
     });
 }
-```
+~~~
 
 From the other side syntax of CoffeeScript generators is neat:
 
-```coffeescript
+~~~coffeescript
 -> gen ->
     yield something
-```
+~~~
 
 But all code examples can be translated to JavaScript as-is.
 
@@ -34,7 +34,7 @@ in this article.
 Imagine simple controller code where we need to get data from few
 http resources and assigne it to the `$scope`:
 
-```coffeescript
+~~~coffeescript
 .controller 'main', ($scope, $http) ->
   $http.get('/tags/').then ({data}) ->
     $scope.tags = data
@@ -48,11 +48,11 @@ http resources and assigne it to the `$scope`:
       $scope.photosError = "Couldn't fetch photos: #{data}"
 
   $scope.fetchPhotos()
-```
+~~~
 
 Let's try to rewrite it with `ng-gen`:
 
-```coffeescript
+~~~coffeescript
 .controller 'main', ($scope, $http, mainGen, gen) -> mainGen ->  # 1
   try
     $scope.tags = (yield $http.get '/tags/').data  # 2
@@ -66,7 +66,7 @@ Let's try to rewrite it with `ng-gen`:
       $scope.photosError = "Couldn't fetch photos: #{err}"
 
   yield $scope.fetchPhotos()
-```
+~~~
 
 I think it looks simpler and reads like imperative code in python or other
 familiar languages.
@@ -89,7 +89,7 @@ But what if we want to create a service for getting tags. And in the service
 we need to retry request five times on error, first let's
 create it without generators:
 
-```coffeescript
+~~~coffeescript
 .constant 'retryCount', 5
 
 .constant 'retryTimeout', 500
@@ -120,7 +120,7 @@ create it without generators:
       $scope.photosError = "Couldn't fetch photos: #{err}"
 
   yield $scope.fetchPhotos()
-```
+~~~
 
 Wow, this service looks too complex, and what happens here:
 
@@ -135,7 +135,7 @@ Wow, this service looks too complex, and what happens here:
 Let's try to rewrite this pain to generators, all code except
 the service stay the same:
 
-```coffeescript
+~~~coffeescript
 .factory 'Tags', ($http, gen, wait, retryCount, retryDelay) ->
   all: -> gen ->
     for errorsCount in [0..retryCount]
@@ -145,7 +145,7 @@ the service stay the same:
       catch {data: err}
         yield wait retryDelay  # 2
     throw err  # 3
-```
+~~~
 
 Isn't it a lot simpler, more readable and more flat?
 What happens here:
@@ -164,10 +164,10 @@ with which we can use generators with some limitation. For example,
 we can't run code like this in browsers without native support of
 generators:
 
-```coffeescript
+~~~coffeescript
 while True
   $scope.posts = (yield $http.get '/posts/').data
   yield wait 5000
-```
+~~~
 
 Additional links: [ng-gen](https://github.com/nvbn/ng-gen), [JavaScript samples](https://github.com/nvbn/ng-gen/blob/master/example/public/app.js).

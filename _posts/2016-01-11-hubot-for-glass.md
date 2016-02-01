@@ -9,11 +9,11 @@ For home automation I use [Hubot](https://hubot.github.com), it's something like
 for creating chat bots, it's very easy to use
 and rules for it can be written in CoffeeScript, like:
 
-```coffeescript
+~~~coffeescript
 robot.hear /pause move/i, (res) ->
   exec 'player pause'
   res.send 'Sure!'
-```
+~~~
 
 So I planned to create an app for phone, which would allow me to say "Ok Google, Hubot, next song",
 or something similar. But it's not possible, Android API not allow
@@ -23,9 +23,9 @@ only commands from [predefined list](https://developers.google.com/voice-actions
 But I remembered that I have useless Google Glass, which GDK API allows to
 create custom "Ok Glass" commands, like "Ok Glass, Hubot, next song", at least in development mode with:
 
-```xml
+~~~xml
 <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
-```
+~~~
 
 First of all I created Hubot adapter which support something like polling with simple API:
 
@@ -44,14 +44,14 @@ For Glass part I've used Kotlin with a few nice libraries:
 
 And it's very great combination, with them making http request is much nicer than with java and just `DefaultHttpClient`, like:
 
-```kotlin
+~~~kotlin
 Fuel.post("$url/polling/message/")
     .body(jsonObject("user" to user, "text" to text).toString())
     .header("Content-Type" to "application/json")
     .jsonPromise()
     .success { info("Message $text sent") }
     .fail { warn("Can't send message $text because $it") }
-```
+~~~
 
 Just promises in comparison with [Clojure core.async](https://github.com/clojure/core.async)
 and [Scala Akka](http://akka.io/) it's a bit way back, it's like writing in pre ES7 JavaScript. 

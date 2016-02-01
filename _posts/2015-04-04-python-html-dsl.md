@@ -7,22 +7,22 @@ keywords:   python, html
 
 In Clojure world we have [hiccup](https://github.com/weavejester/hiccup) for creating html:
 
-```clojure
+~~~clojure
 [:div.top
   [:h1 "Hello world]
   [:p hello-text]]
-```
+~~~
 
 In JS world we have [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html) (it's not internal DSL, but it's relevant):
 
-```js
+~~~js
 var html = (
     <div className="top">
         <h1>Hello world</h1>
         <p>{helloText}</p>
     </div>
 );
-```
+~~~
 
 But in Python we don't have similar DSL (upd: actually we have:
 [lxml.E](http://lxml.de/tutorial.html#the-e-factory),
@@ -32,16 +32,16 @@ But in Python we don't have similar DSL (upd: actually we have:
 (actually it isn't, I don't recommend to do something like this,
 it's just an experiment) to write something like this:
  
-```python
+~~~python
 h.div(klass='top')[
     h.h1["Hello word"],
     h.p[hello_text]]
-```
+~~~
 
 Let's start with simplest part, implement ability to call `h.p` and
 `h.div`, for this I'll use magic of metaclasses and `__getattr__`:
 
-```python
+~~~python
 class hBase(type):
     def __getattr__(cls, name):
         return cls(name)
@@ -60,13 +60,13 @@ class h(metaclass=hBase):
         
 In [3]: h.div
 Out [3]: <div></div>
-```
+~~~
 
 It's very simple, now is the time to add ability to define
 childs for html element with `h.div[h.h2, h.p]`, magic of `__getitem__`
 will help me:
 
-```python
+~~~python
 class hBase(type):
     def __getattr__(cls, name):
         return cls(name)
@@ -103,14 +103,14 @@ In [7]: h.div[h.h2['Hello world'], h.p['Just text.']]
 Out [7]:
 <div><h2>Hello world</h2>
 <p>Just text.</p></div>
-```
+~~~
 
 Cool, it works! So now let's add ability to define attributes
 with `h.div(id="my-id")`, but before I need to notice that in
 python we not allowed to use `class` as a name of argument,
 so I'll use `klass` instead. So here I'll use magic of `__call__`:
 
-```python
+~~~python
 class hBase(type):
     def __getattr__(cls, name):
         return cls(name)
@@ -167,13 +167,13 @@ In [20]: h.div(klass='top')[
 Out [20]:
 <div class="top"><h1>Hello word</h1>
 <p>Hi!</p></div>
-```
+~~~
 
 Yep, it's working, and it's a simple DSL/template language just in
 44 lines of code, thanks to Python magic methods. It can be used
 in more complex situations, for example &ndash; blog page:
 
-```python
+~~~python
 from collections import namedtuple
 
 
@@ -204,7 +204,7 @@ Text 2</article>
 Text 3</article>
 <article><h2 class="title">Title 4</h2>
 Text 4</article></div></body>
-```
+~~~
 
 And after that little experiment I have to say that
 everything is a LISP if you're brave enough =)

@@ -17,7 +17,7 @@ And now I trying to do it with [pyboard](http://micropython.org/) and my
 First of all, I wrote simple actor (not a really actor, but something similar)
 for bicolor LED:
 
-```python
+~~~python
 from microasync.async import as_chan, do_all
 from microasync.device import get_output_pin
 
@@ -40,12 +40,12 @@ def get_bicolor_led(chan, left, right):  # `channel` is this actor "mailbox"
         elif msg == 'none':
             yield do_all(left_pin.put(0),
                          right_pin.put(0))
-```
+~~~
 
 This actor is simple to use, for changing color of LED we just need to send (put in channel)
 `red`, `green`, `yellow` or `none`: 
 
-```python
+~~~python
 from microasync.async import coroutine
 
 
@@ -57,11 +57,11 @@ def test_bicolor_led():
     yield led.put('yellow')  # switch LED color to yellow (red and green together)
     yield led.put('none')  # turn off LED
 
-```
+~~~
 
 Then I created simple `filter` for channel, which can be toggled by button on pyboard:
 
-```python
+~~~python
 from microasync.async import as_chan, select
 from microasync.device import get_switch
 
@@ -79,14 +79,14 @@ def switchable_filter(chan, orig_chan, fn):
                 yield orig_chan.put(val)
         else:
             enabled = not enabled  # toggle filter state
-```
+~~~
 
 Now I created simple coroutine, which sends `red`, `green`, `yellow` and `none`
 to two LEDs sequentially in loop. And when we click button on pyboard we
 toggle filter, which passess all messages except `red` to the first LED
 and only `red` to the second LED:
 
-```python
+~~~python
 from microasync.async import coroutine
 
 
@@ -100,7 +100,7 @@ def main():
         for led in (first_led, second_led):
             for mode in ('red', 'green', 'yellow', 'none'):
                 yield led.put(mode)  # sends red, green, yellow, none 
-```
+~~~
 
 Full source code of example available on
 [github](https://github.com/nvbn/microasync/blob/master/examples/reactive.py). And video with result:

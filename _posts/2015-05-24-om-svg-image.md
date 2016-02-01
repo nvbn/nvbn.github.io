@@ -13,7 +13,7 @@ But React has an ugly solution for using raw html &ndash;
 [dangerouslySetInnerHTML](https://facebook.github.io/react/tips/dangerously-set-inner-html.html).
 So it's easy to create Om component for an image:
 
-```clojure
+~~~clojure
 (defn image
   [{:keys [href x y width height]} _]
   (reify
@@ -23,17 +23,17 @@ So it's easy to create Om component for an image:
                       "width='" width "' height='" height "'"
                       "xlink:href='" href "'/>")]
         (dom/g #js {:dangerouslySetInnerHTML #js {:__html html}})))))
-```
+~~~
 
 It just put a raw html inside `<g>` SVG tag. Usage:
 
-```clojure
+~~~clojure
 (om/build image {:href "image.png"
                  :x 10
                  :y 20
                  :width 200
                  :height 300})
-```
+~~~
 
 Solution is a bit ugly and unsafe, but it works:
 

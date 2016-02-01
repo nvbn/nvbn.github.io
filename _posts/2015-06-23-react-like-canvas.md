@@ -21,7 +21,7 @@ for the single page. You can open it on a new page
 
 So, first example &ndash; a rotating rectangle:
 
-```clojure
+~~~clojure
 (defn rotating-rectangle
   [ctx {:keys [angle]} _]
   (r/call! ctx save)
@@ -46,7 +46,7 @@ So, first example &ndash; a rotating rectangle:
   (let [state (atom {:angle 0})]
     (r/init! (browser canvas) rotating-rectangle state {})
     (rotate-rectangle state)))
-```
+~~~
 
 Code is very low level (in comparison with the code for the same
 [rectangle with svg](/2015/05/28/svg-animation/)), but it works pretty smooth: 
@@ -59,7 +59,7 @@ special macros are required for tracking interaction with the shadow canvas.
 
 So, back to examples, let's try to make the same rectangle moving, code was changed just a bit:
 
-```clojure
+~~~clojure
 (defn rotating-and-moving-rectangle
   [ctx {:keys [angle x]} _]
   (r/call! ctx save)
@@ -87,7 +87,7 @@ So, back to examples, let's try to make the same rectangle moving, code was chan
                      :x 10})]
     (r/init! (browser canvas) rotating-and-moving-rectangle state {})
     (rotate-and-move-rectangle state)))
-```
+~~~
 
 And it's also works very smooth:
 
@@ -97,7 +97,7 @@ And it's also works very smooth:
 Then try to draw sprites, it's very complicated with React and SVG, but very simple with
 this solution because we can use [canvas drawImage method](https://developer.mozilla.org/ru/docs/Web/API/CanvasRenderingContext2D/drawImage):
 
-```clojure
+~~~clojure
 (defn mario
   [ctx atlas mario-state x y]
   (when mario-state
@@ -148,7 +148,7 @@ this solution because we can use [canvas drawImage method](https://developer.moz
         (handle-mario state :mario-3-state :mario-3)
         (handle-mario state :mario-4-state :mario-4)
         (handle-mario state :mario-5-state :mario-5))))
-```
+~~~
 
 Code is a bit redundant, but it shows how code for rendering and code for managing state
 can be easily separated. In action:
@@ -159,7 +159,7 @@ can be easily separated. In action:
 So let's try something more complicated, a scene where the Mario goes to the right,
 jumps, goes to the left, jumps and repeats all actions:
 
-```clojure
+~~~clojure
 (defn mario-scenario
   [state]
   (go-loop []
@@ -225,7 +225,7 @@ jumps, goes to the left, jumps and repeats all actions:
         (r/init! platform moving-mario state options)
         (handle-mario state :mario-state :mario-draw-state)
         (mario-scenario state))))
-```
+~~~
 
 There's a bit too much code for managing the state of the Mario, but I guess it's one of the
 simplest ways to write a scene like this:

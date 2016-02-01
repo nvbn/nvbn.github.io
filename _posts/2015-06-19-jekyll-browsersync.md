@@ -14,15 +14,15 @@ so I decided to use them.
  
 First of all,  init a new package and install all dependencies:
 
-```bash
+~~~bash
 npm init
 sudo npm install -g gulp
 npm install --save-dev gulp-shell lodash gulp browser-sync
-```
+~~~
 
 And create a `gulpfile.js` with:
 
-```js
+~~~js
 var gulp = require('gulp');
 var shell = require('gulp-shell');
 var browserSync = require('browser-sync').create();
@@ -40,20 +40,20 @@ gulp.task('serve', function () {
 });
 
 gulp.task('default', ['build', 'serve']);
-```
+~~~
 
 Then add created files and folders to Jekyll `exclude`, otherwise `gulp`
 will found more than one task with the same name. In `_config.yml`:
 
-```
+~~~
 exclude: [node_modules, gulpfile.js]
-```
+~~~
 
 And that's all! For running it:
 
-```bash
+~~~bash
 gulp
-```
+~~~
 
 In action:
 

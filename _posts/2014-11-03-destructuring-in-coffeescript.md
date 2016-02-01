@@ -12,7 +12,7 @@ but works with functions (and methods) arguments.
 
 Simple examples:
 
-```coffeescript
+~~~coffeescript
 getUppercaseName = ({name}) -> name.toUpperCase()
 getUppercaseName name: 'test'
 # 'TEST'
@@ -31,13 +31,13 @@ prettifyUser
     groups: {names: ['a', 'b', 'c']}
     username: 'user'
 # 'user: a, b, c'
-```
+~~~
 
 Looks useful? But will be more if we combine it with
 [underscore.js](http://underscorejs.org/). Assume we need to transform result of
 `$.serializeArray()` like:
 
-```json
+~~~json
 [
     {"name": "title", "value": "Test Title"},
     {"name": "text", "value": ""},
@@ -46,21 +46,21 @@ Looks useful? But will be more if we combine it with
     {"name": "tags", "value": "Clojure"},
     {"name": "csrfmiddlewaretoken", "value": "token"}
 ]
-```
+~~~
 
 To something like (fields with blank value and service fields should be removed, values of
 fields with same name should be presented as a list):
 
-```json
+~~~json
 {
     "title": "Test Title",
     "tags": ["Python", "CoffeeScript", "Clojure"]
 }
-```
+~~~
 
 Let's start with imperative solution:
 
-```coffeescript
+~~~coffeescript
 transform = (serializedForm) ->
     groupByName = ->
         result = {}
@@ -82,13 +82,13 @@ transform = (serializedForm) ->
         result
     
     flattenFieldsWithSingleValue()
-```
+~~~
 
 It works, but looks ugly and complex.
 
 Now look to implementation with underscore.js and destructuring arguments:
 
-```coffeescript
+~~~coffeescript
 transform = (serializedForm) ->
     _.chain serializedForm
      .reject ({name, value}) ->
@@ -99,7 +99,7 @@ transform = (serializedForm) ->
          [name, if vals.length > 1 then vals else vals[0]]
      .object()
      .value()
-```
+~~~
 
 A lot better I think. Less lines of code, each transformation step can be simple
 separated from each other. And all this because of fluent interface presented by

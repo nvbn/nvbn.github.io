@@ -8,7 +8,7 @@ keywords:   clojure, clojurescript
 Sometimes I need to test content of a big structure, where not all content meaningful,
 so I need something like fuzzy assertions. And I use [core.match](https://github.com/clojure/core.match) for that, like:
 
-```clojure
+~~~clojure
 (ns example.test
   (:require [cljs.test :refer-macros [deftest is]]
             [cljs.core.match :refer-macros [match]]
@@ -23,7 +23,7 @@ so I need something like fuzzy assertions. And I use [core.match](https://github
            [:set [:ref _] "height" [:val 40]]
            [:set [:ref _] "fillStyle" [:val "red"]]] true
           _ false))))
-```
+~~~
 
 But it's redundant, and failure messages are a bit ugly and it doesn't even show content of not matched structure:
 
@@ -32,7 +32,7 @@ But it's redundant, and failure messages are a bit ugly and it doesn't even show
 That can be easily fixed, because `cljs.test` is very extendable. So we just need to create macros
 for simpler matching and implement `assert-expr` method for it:
 
-```clojure
+~~~clojure
 (ns example.test-utils
   (:require [cljs.core.match :refer [match]]
             [cljs.test :refer [assert-expr]]))
@@ -54,11 +54,11 @@ for simpler matching and implement `assert-expr` method for it:
                              :message ~msg
                              :expected '~pattern
                              :actual ~x}))))
-```
+~~~
 
 Then update test:
 
-```clojure
+~~~clojure
 (ns example.test
   (:require [cljs.test :refer-macros [deftest is]]
             [example.test :refer-macros [match?]]
@@ -72,7 +72,7 @@ Then update test:
            [:set [:ref _] "width" [:val 30]]
            [:set [:ref _] "height" [:val 40]]
            [:set [:ref _] "fillStyle" [:val "red"]]]))))
-```
+~~~
 
 After that failure message will be much nicer:
 

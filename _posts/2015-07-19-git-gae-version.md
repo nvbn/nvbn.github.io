@@ -12,7 +12,7 @@ change it manually.
 It's easily can be automatized with a git hook, we just need to fill `.git/hooks/post-checkout`
 with something like:
 
-```python
+~~~python
 #!/usr/bin/env python
 import glob
 import subprocess
@@ -50,17 +50,17 @@ print("Change version in yaml files to", version)
 for path in get_yaml_paths():
     replace_version(path, version)
 
-```
+~~~
 
 And make it executable:
 
-```bash
+~~~bash
 chmod +x .git/hooks/post-checkout
-```
+~~~
 
 In action:
 
-```bash
+~~~bash
 ➜ cat app.yaml | grep "^version:"
 version: fixes
 ➜ git checkout feature
@@ -69,4 +69,4 @@ Your branch is up-to-date with 'origin/feature'.
 Change version in yaml files to feature
 ➜ cat app.yaml | grep "^version:"
 version: feature
-```
+~~~

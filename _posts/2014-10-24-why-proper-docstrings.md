@@ -13,7 +13,7 @@ So that's another three reasons:
 
 For example, we have simple function with docstring:
 
-```python
+~~~python
 def as_chan(create_chan):
     """Decorator which creates channel and coroutine. Passes channel as a
     first value to coroutine and returns that channel.
@@ -45,7 +45,7 @@ def as_chan(create_chan):
             return chan
         return wrapped
     return decorator
-```
+~~~
 
 And using [sphinx-apidoc](http://sphinx-doc.org/man/sphinx-apidoc.html) and
 [Read the Docs](https://readthedocs.org/) we can generate cool documentation
@@ -58,7 +58,7 @@ I've been using [pycharm](https://www.jetbrains.com/pycharm/), but I think there
 
 Suppose we have function ([full source code](https://github.com/nvbn/microasync/blob/master/microasync/device.py)):
 
-```python
+~~~python
 def get_servo(num):
     """Creates write and read channels for servo. Should be used
     only in coroutine.
@@ -77,7 +77,7 @@ def get_servo(num):
     :rtype: (Channel, SlidingChannel)
 
     """
-```
+~~~
 It's not simple to guess what it returns and how work with it, but if we just press
 `ctrl+Q`:
 
@@ -87,13 +87,13 @@ It's not simple to guess what it returns and how work with it, but if we just pr
 
 Assume we started writing simple function:
 
-```python
+~~~python
 def get_user_groups(user):
     """
     :type user: User 
     :rtype: list[Group]
     """
-```
+~~~
 
 With type hinting we can use proper autocomplete inside it:
 

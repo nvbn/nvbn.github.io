@@ -10,9 +10,9 @@ features. In just Django project it can be easily used with
 [django-extensions](https://github.com/django-extensions/django-extensions)
 with:
 
-```bash
+~~~bash
 ./manage.py runserver_plus
-```
+~~~
 
 But we can't use this approach with gae, because it doesn't use `runserver`, it
 just works through wsgi.
@@ -20,7 +20,7 @@ So instead we should wrap our wsgi application with `DebuggedApplication`.
 So in `wsgi.py` (or another file where wsgi
 app defined) we need to change an app initialization to something like:
 
-```python
+~~~python
 from django.core.wsgi import get_wsgi_application
 from django.conf import settings
 from werkzeug.debug import DebuggedApplication
@@ -30,6 +30,6 @@ if settings.DEBUG:
     app = DebuggedApplication(app, True)
     # Werkzeug won't work without exceptions propagation
     settings.DEBUG_PROPAGATE_EXCEPTIONS = True
-```
+~~~
 
 And that's all.
