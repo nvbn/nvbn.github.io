@@ -22,7 +22,7 @@ So we need to insert IFrame API script and our script:
         [].forEach.call(document.querySelectorAll('.gifify'), function(el) {
             var player = new YT.Player(el, {
                 events: {
-                    'onReady': function () {
+                    'onReady': function() {
                         player.mute();
                         player.playVideo();
                     },
