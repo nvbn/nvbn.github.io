@@ -7,6 +7,7 @@ kramdown:
   syntax_highlighter: rouge
 excerpt_separator: <!-- more -->
 exclude: [node_modules, gulpfile.js]
+future: true
 gems:
   - jekyll-sitemap
   - jekyll-paginate
