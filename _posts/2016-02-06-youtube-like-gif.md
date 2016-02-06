@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Make youtube player look like a gif"
+title:      "Make youtube video look like a gif"
 date:       2016-02-06 18:22:00 +03:00
 keywords:   youtube, js
 ---
