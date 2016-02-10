@@ -499,7 +499,7 @@ h3 {
   margin-top: 0;
 }
 
-pre code * {
+pre code *, pre *, pre {
   font-family: 'Source Code Pro', monospace !important;
   font-size: 15px !important;
   line-height: 1.2em !important;
