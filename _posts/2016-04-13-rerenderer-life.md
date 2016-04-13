@@ -93,8 +93,9 @@ And that's all, in action:
 <div style='overflow: hidden'><iframe src='https://rerenderer.github.io/example-game-of-life/' width="800" height="400" frameBorder="0" scrolling="no" style='margin-top: -130px; margin-left: -50px;'></iframe></div>
 
 And it works on [Android (apk)](https://rerenderer.github.io/example-game-of-life/game_of_life.apk), not without problems, it has
-some performance issues. But it works without changes in code and renders on Android native Canvas:
+some performance issues. And there's strange behaviour, it's like ten times slower when screen recorder is on.
+But it works without changes in code and renders on Android native Canvas:
 
-<a href='/assets/gameoflife/android.png'><img style='width: 100%' src='/assets/gameoflife/android.png' /></a>
+<iframe class="gifify" width="766" height="431" src="https://www.youtube.com/embed/oXI5vwFzt8s?enablejsapi=1&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
 
 [Source code on github.](https://github.com/rerenderer/example-game-of-life/)
