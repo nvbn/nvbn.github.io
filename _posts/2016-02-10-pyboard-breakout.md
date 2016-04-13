@@ -233,7 +233,7 @@ Never mind performance, it'll be fixed in the end of the article:
 
 <iframe class="gifify" width="766" height="431" src="https://www.youtube.com/embed/gnGoaE76TPM?enablejsapi=1&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
 
-Now it's time for teh hardest thing &ndash; moving and bouncing ball, so there's no real physics, for simplification
+Now it's time for the hardest thing &ndash; moving and bouncing ball, so there's no real physics, for simplification
 ball movements will be represented as `vx` and `vy`, so when ball:
 
 * initialised: `vx = rand(SPEED)`, `vy = √SPEED^2 - vx^2`;
