@@ -25,7 +25,7 @@ with `created_at = db.DateTimeProperty(auto_now_add=True)`, so test like:
 from freezegun import freeze_time
 
 
-def test_created_at_():
+def test_created_at():
     with freeze_time('2016.1.1'):
         doc = Document()
         doc.put()
