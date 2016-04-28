@@ -44,7 +44,7 @@ For Glass part I've used Kotlin with a few nice libraries:
 
 And it's very great combination, with them making http request is much nicer than with java and just `DefaultHttpClient`, like:
 
-~~~kotlin
+~~~scala
 Fuel.post("$url/polling/message/")
     .body(jsonObject("user" to user, "text" to text).toString())
     .header("Content-Type" to "application/json")
