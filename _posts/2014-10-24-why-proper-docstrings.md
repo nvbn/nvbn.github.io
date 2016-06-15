@@ -49,7 +49,7 @@ def as_chan(create_chan):
 
 And using [sphinx-apidoc](http://sphinx-doc.org/man/sphinx-apidoc.html) and
 [Read the Docs](https://readthedocs.org/) we can generate cool documentation
-[like this](http://microasync.readthedocs.org/en/latest/microasync.html#microasync.async.as_chan).
+[like this](https://microasync.readthedocs.io/en/latest/microasync.html#microasync.async.as_chan).
 And it'll be automatically generated after each push to github.
 
 #### Quick help in IDE
