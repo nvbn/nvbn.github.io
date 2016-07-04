@@ -8,7 +8,7 @@ keywords:   coffeescript, generators
 Sometimes it's very hard to understand code with a bunch of callbacks, even if it with promises.
 But in ES6 and in CoffeeScript 1.9 we got generators, so maybe we can avoid
 callbacks with them, and use something like
-[tornado.gen](http://tornado.readthedocs.org/en/latest/gen.html)?
+[tornado.gen](https://tornado.readthedocs.io/en/latest/gen.html)?
 
 And we can, let's look at this little helper function:
 

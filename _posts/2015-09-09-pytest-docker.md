@@ -12,7 +12,7 @@ and now it was formalized in a simple py.test plugin &mdash; [pytest-docker-pexp
 It provides few useful fixtures:
 
 * `spawnu` &ndash; `pexpect.spawnu` object attached to a container, it can be used
-to interact with apps inside the container, [read more](https://pexpect.readthedocs.org/en/latest/api/pexpect.html#pexpect.spawn);
+to interact with apps inside the container, [read more](https://pexpect.readthedocs.io/en/latest/api/pexpect.html#pexpect.spawn);
 * `TIMEOUT` &ndash; a special object, that can be used in assertions those checks output;
 * `run_without_docker` &ndash; indicates that tests running without Docker, when
 py.test called with `--run-without-docker`.
