@@ -65,3 +65,21 @@ npm test
 
 Also a lot of outdated docs uses `jest.autoMockOff`, it's deprecated and doesn't
 work with es6 imports. You should use `jest.disableAutomock()`.
+
+If you want to use use [enzyme](https://github.com/airbnb/enzyme) for testing React Native components, you should install:
+
+~~~bash
+npm install --save-dev enzyme react-addons-test-utils react-dom react-native-mock
+~~~
+
+Then add `react` and `enzyme` to `unmockedModulePathPatterns`. And create `__mocks__/react-native.js` with:
+
+~~~javascript
+import ReactNative from 'react-native-mock';
+
+__DEV__ = true;
+
+module.exports = ReactNative;
+~~~
+
+Now you can mock React Native and use enzyme.
