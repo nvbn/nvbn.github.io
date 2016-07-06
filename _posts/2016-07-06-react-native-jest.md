@@ -15,7 +15,7 @@ So, I accumulated information from Jest issues and got working config.
 First of all we need to install `jest-cli` and `babel-jest`:
  
 ~~~bash
-npm install --save-dev jest-cli babel-jest babel-polyfill
+npm install --save-dev jest-cli babel-jest babel-polyfill babel-preset-react-native
 ~~~
 
 Then fill `.babelrc` with:
