@@ -90,7 +90,7 @@ And now the final part, glue that connect controller with view and state:
 
 And that's all, in action:
 
-<div style='overflow: hidden'><iframe src='https://rerenderer.github.io/example-game-of-life/' width="800" height="400" frameBorder="0" scrolling="no" style='margin-top: -130px; margin-left: -50px;'></iframe></div>
+<div style='overflow: hidden'><div class='slow-iframe' src='https://rerenderer.github.io/example-game-of-life/' width="800" height="400" frameBorder="0" scrolling="no" style='margin-top: -130px; margin-left: -50px;'></div></div>
 
 And it works on [Android (apk)](https://rerenderer.github.io/example-game-of-life/game_of_life.apk), not without problems, it has
 some performance issues. And there's strange behaviour, it's like ten times slower when screen recorder is on.
