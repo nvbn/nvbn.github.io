@@ -46,20 +46,21 @@ So I've developed a little macro which works like `with-redefs` and can be used 
 and with code without core.async:
 
 ~~~clojure
-(defn- ^:no-doc with-reset-once
-  [[a-var a-val] body]
-  `(let [prev-val# [~a-var]]
-     (set! ~a-var ~a-val)
-     (try (do ~@body)
-          (catch js/Error e# (throw e#))
-          (finally (set! ~a-var (first prev-val#))))))
-
 (defmacro with-reset
   [bindings & body]
-  (let [wrapper-fn (->> (partition-all 2 bindings)
-                        (map #(partial with-reset-once %))
-                        (apply comp))]
-    (wrapper-fn body)))
+  (let [names (take-nth 2 bindings)
+        vals (take-nth 2 (drop 1 bindings))
+        current-vals (map #(list 'identity %) names)
+        tempnames (map (comp gensym name) names)
+        binds (map vector names vals)
+        resets (reverse (map vector names tempnames))
+        bind-value (fn [[k v]] (list 'set! k v))]
+    `(let [~@(interleave tempnames current-vals)]
+       (try
+         ~@(map bind-value binds)
+         ~@body
+         (finally
+           ~@(map bind-value resets))))))
 ~~~
 
 And usage:
@@ -76,3 +77,6 @@ And usage:
 I put this macro in [clj-di](https://github.com/nvbn/clj-di) for avoiding copying it between projects.
 
 [Tests for this macro on github.](https://github.com/nvbn/clj-di/blob/2487359658a603c41dde621227620014fe06c6dd/test/cljx/clj_di/core_test.cljx#L88)
+
+
+**UPD: example updated.**
