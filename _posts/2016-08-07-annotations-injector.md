@@ -163,21 +163,6 @@ if __name__ == '__main__':
     Injector().run(init_app)
 ~~~
 
-And make it better with context manager:
-
-~~~python
-from contextlib import contextmanager
-
-
-@contextmanager
-def injector():
-    yield Injector()
-
-
-with injector() as resolver:
-    resolver.run(init_app)
-~~~
-
 Although this approach is simple and straightforward, it's overkill for most of apps.
 
 [Package on github](https://github.com/nvbn/anndi).
