@@ -168,6 +168,12 @@ And make it better with context manager:
 ~~~python
 from contextlib import contextmanager
 
+
+@contextmanager
+def injector():
+    yield Injector()
+
+
 with injector() as resolver:
     resolver.run(init_app)
 ~~~
