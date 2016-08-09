@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Partial application and piping with ... and \@"
+title:      "Partial application and piping with ... and &#64;"
 date:       2016-08-09 14:00:00
 keywords:   python
 ---
