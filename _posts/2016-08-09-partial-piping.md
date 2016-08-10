@@ -175,4 +175,4 @@ value: 648
 However it may look strange and unpythonic, but I guess it would be nice
 to see something like this in future Python releases.
 
-[Gist with sources.](https://gist.github.com/nvbn/d71fee5b1cad58d5eb80e369194f4155)
+[Gist with sources](https://gist.github.com/nvbn/d71fee5b1cad58d5eb80e369194f4155), [next part](/2016/08/09/partial-piping-ast/).
