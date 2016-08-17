@@ -272,7 +272,8 @@ print(str.upper((lambda __ellipsis_partial_arg_5: str.format('result: {}', __ell
 
 This approach is better then previous, we don't need to manually wrap all functions with `ellipsis_partial` or
 use `_` helper. Also we don't use custom `Partial`. But with this approach we
-need to manually transform AST, so in the next part I'll show how we
+need to manually transform AST, so in [the next part](/2016/08/17/ast-import/) I'll show how we
 can do it automatically with module finder/loader.
 
-[Gist with sources](https://gist.github.com/nvbn/8d8b242ae88c97d1746e3b8b8ebbc257), [previous part](/2016/08/09/partial-piping/).
+[Gist with sources](https://gist.github.com/nvbn/8d8b242ae88c97d1746e3b8b8ebbc257), [previous part](/2016/08/09/partial-piping/),
+[next part](/2016/08/17/ast-import/).

@@ -182,4 +182,4 @@ And that's all, you can try transformers by yourself with `transformers` package
 pip install transformers
 ~~~
 
-[Source code on github](https://github.com/nvbn/__transformers__), [package](https://pypi.python.org/pypi/transformers).
+[Source code on github](https://github.com/nvbn/__transformers__), [package](https://pypi.python.org/pypi/transformers), [previous part](/2016/08/09/partial-piping-ast/).
