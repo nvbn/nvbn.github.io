@@ -172,4 +172,4 @@ unbuffer ./cava -p soundlights/cava_config | ssh pi@retropie.local sudo python s
 
 And that's all.
 
-[Sources of github.](https://github.com/nvbn/soundlights)
+[Sources on github.](https://github.com/nvbn/soundlights)
