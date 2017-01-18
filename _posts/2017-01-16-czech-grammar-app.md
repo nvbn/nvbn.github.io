@@ -45,7 +45,7 @@ few not so obvious problems.
 
 The first was finding word's endings, there's no tools for nlp for Czech in JavaScript world.
 But the language has limited set of word's endings, so hardcoding them and checking every
-long enough word is workings:
+long enough word works:
 
 ~~~javascript
 const ENDS = [
