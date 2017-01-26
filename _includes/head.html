@@ -48,7 +48,9 @@
     {% else %}
         <meta name="og:title" content="{{ site.name }}">
     {% endif %}
-    <meta name="og:description" content="{{ page.content | strip_html | xml_escape | truncate: 200 }}">
+    {% if page.date %}
+        <meta name="og:description" content="{{ page.content | strip_html | xml_escape | truncate: 200 }}">
+    {% endif %}
     {% if page.image %}
         <meta name="og:image" content="{{ site.url }}{{ page.image }}">
     {% endif %}
