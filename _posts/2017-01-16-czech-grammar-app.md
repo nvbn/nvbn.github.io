@@ -3,6 +3,7 @@ layout:     post
 title:      "Little app for learning Czech word's endings"
 date:       2017-01-16 20:40:00
 keywords:   czech, react, wikipedia
+image:      /assets/czgramma.png
 ---
 
 ![czgramma screenshot](/assets/czgramma.png) 

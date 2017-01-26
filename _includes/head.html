@@ -39,4 +39,17 @@
 
         mermaid.initialize({startOnLoad: true});
     </script>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@nvbn">
+    <meta name="twitter:creator" content="@nvbn">
+    {% if page.title %}
+        <meta name="twitter:title" content="{{ page.title }}">
+    {% else %}
+        <meta name="twitter:title" content="{{ site.name }}">
+    {% endif %}
+    <meta name="twitter:description" content="{{ page.content | strip_html | xml_escape | truncate: 200 }}">
+    {% if page.image %}
+        <meta name="twitter:image:src" content="{{ site.url }}{{ page.image }}">
+    {% endif %}
 </head>
