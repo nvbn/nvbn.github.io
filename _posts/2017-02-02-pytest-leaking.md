@@ -8,7 +8,7 @@ keywords:   python, pytest
 On one project we had a problem with leaking tests, and problem was so huge
 that some tests was leaking even
 for a few GB. We tried [pytest-leaks](https://github.com/abalkin/pytest-leaks), but
-it was a bit overkill and didn't work withed our python version. So we wrote a little
+it was a bit overkill and didn't worked with our python version. So we wrote a little
 leak detector by ourselves.
 
 First of all we got consumed RAM with [psutil](https://github.com/giampaolo/psutil):
