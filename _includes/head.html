@@ -53,5 +53,7 @@
     {% endif %}
     {% if page.image %}
         <meta name="og:image" content="{{ site.url }}{{ page.image }}">
+    {% else %}
+        <meta name="og:image" content="{{ site.url }}/assets/default_card_image.png">
     {% endif %}
 </head>
