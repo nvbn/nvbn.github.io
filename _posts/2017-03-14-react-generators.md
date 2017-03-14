@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Simplify complex React components with generatos"
+title:      "Simplify complex React components with generators"
 date:       2017-03-14 11:00:00
 keywords:   javascript, js, react
 ---
