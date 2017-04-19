@@ -16,7 +16,7 @@ Python would be better for this kind of project because of a high variety of
 NLP related libs. Although for Russian in js exists [Az.js](https://github.com/deNULL/Az.js),
 which I've used in the bot, and this library has almost everything needed by the bot.
 
-Worth to mention as bot speaks in russian, examples below are in russian to, I
+Worth to mention as the bot speaks in russian, examples below are in russian too, I
 add translation in brackets, but sometimes translation doesn't have much sens.
 
 [The bot/telegram API part](https://github.com/nvbn/telegram-swear-bot/blob/master/src/bot.js)
