@@ -60,7 +60,7 @@ if __name__ == '__main__':
 In action:
 
 ~~~bash
-➜ ./ssh_color.py mrw.wtf >
+➜ ./ssh_color.py mrw.wtf
 ]6;1;bg;reg;brightness;173]6;1;bg;green;brightness;84]6;1;bg;blue;brightness;51
 ~~~
 
