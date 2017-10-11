@@ -44,7 +44,7 @@ def str_to_color(s):
 
 def generate_seqs(color):
     seq = '\033]6;1;bg;{};brightness;{}\a'
-    names = ['reg', 'green', 'blue']
+    names = ['red', 'green', 'blue']
     for name, v in zip(names, color):
         yield seq.format(name, v)
 
@@ -61,7 +61,7 @@ In action:
 
 ~~~bash
 ➜ ./ssh_color.py mrw.wtf
-]6;1;bg;reg;brightness;173]6;1;bg;green;brightness;84]6;1;bg;blue;brightness;51
+]6;1;bg;red;brightness;173]6;1;bg;green;brightness;84]6;1;bg;blue;brightness;51
 ~~~
 
 Now we need to create a bash/zsh function that will call our script,
