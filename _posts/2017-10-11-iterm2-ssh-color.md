@@ -79,4 +79,4 @@ alias ssh=ssh_color
 
 And it just works:
 
-![book cover white](/assets/iterm2_ssh_color.png)
+![screenshot](/assets/iterm2_ssh_color.png)
