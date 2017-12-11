@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Christmas lights on MacBook TouchBar"
-date:       2017-12-11 22:00:00
+date:       2017-12-11 22:01:00
 keywords:   js, electron, macbook, touchbar
 image:      /assets/macbook_xmas.jpg
 ---
