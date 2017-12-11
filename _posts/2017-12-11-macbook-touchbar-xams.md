@@ -96,4 +96,4 @@ By the end I just run the script with electron and got semi-nice Christmas light
 electron macbook_touchbar_christmas_lights.js
 ~~~
 
-[Gist with sources.](https://gist.github.com/nvbn/0dd46fc91a4a0db34cd37d454d4cb7ed).
+[Gist with sources.](https://gist.github.com/nvbn/0dd46fc91a4a0db34cd37d454d4cb7ed)
