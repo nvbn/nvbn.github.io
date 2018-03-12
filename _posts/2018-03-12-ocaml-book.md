@@ -3,7 +3,7 @@ layout:     post
 title:      "Anil Madhavapeddy, Jason Hickey, Yaron Minsky: Real World OCaml"
 date:       2018-03-12 22:50:00
 keywords:   book
-image:      /assets/design_book.jpg
+image:      /assets/ocaml_book.png
 ---
 
 ![book cover white](/assets/ocaml_book.png) Around a month ago I've started playing around
