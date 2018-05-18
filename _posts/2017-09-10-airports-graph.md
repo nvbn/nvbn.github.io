@@ -158,3 +158,5 @@ So now it's much nicer:
 <img src='/assets/flight/flight.svg' style='width: 100%' />
 
 [Gist with sources.](https://gist.github.com/nvbn/617dd73d7b4bf35877cf5c235a8861c8)
+
+[Updated graph from May 2018.](/assets/flight_2.png)
