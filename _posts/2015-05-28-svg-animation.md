@@ -6,9 +6,9 @@ keywords:   om, clojure, clojurescript, svg
 ---
 
 Animation in a browser is a very complicated subject, it requires tons of timers,
-hard-to-track imperative stuff like `drawRect`. But isn't it can be simplified to
-just drawing specific items in some places is special time, sounds complicated too,
-but it's not. In `SVG` it's just a changing of attributes like `x`, `y`, `width` and etc,
+hard-to-track imperative stuff like `drawRect`. But can't it be simplified to just drawing
+specific items in some places at certain times? Sounds complicated too, but it’s not.
+In `SVG` it's just a changing of attributes like `x`, `y`, `width` and etc,
 or inserting DOM nodes with desired attributes. Sounds like React will be useful here,
 I'll use not just React, but Om with [om-tools](https://github.com/Prismatic/om-tools)
 (for better syntax).
