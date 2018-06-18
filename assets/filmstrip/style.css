@@ -13,6 +13,13 @@ html {
     padding-top: 20px;
 }
 
+@media only screen and (max-device-width : 640px) {
+    .box {
+        margin: 0;
+        margin-left: 20px;
+    }
+}
+
 .box * {
     display: block;
 }
