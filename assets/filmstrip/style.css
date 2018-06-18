@@ -1,0 +1,24 @@
+html {
+    background: black;
+}
+
+.box {
+    margin: auto;
+    width: 450px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.box:first-child {
+    padding-top: 20px;
+}
+
+.box * {
+    display: block;
+}
+
+.box span {
+    font-size: 32px;
+    text-align: center;
+    color: #fff;
+}
