@@ -10,7 +10,7 @@ image:      /assets/bobs_burgers_to_simpsons.jpg
 
 Back in June I've [played a bit with subtitles and tried to generate a filmstrip](/2018/06/19/stock-film-strip/),
 it wasn't that much successful, but it was fun. So I decided to try to go deeper and generate a video from
-subtitles. The main idea is to get phrases from a part of some vide, get the most similar phrases from
+subtitles. The main idea is to get phrases from a part of some video, get the most similar phrases from
 another video and generate something.
 
 As the "enemy" I've decided to use [a part from Bob's Burgers Tina-rannosaurus Wrecks episode](https://www.youtube.com/watch?v=hZ_EKHGgWJQ):
