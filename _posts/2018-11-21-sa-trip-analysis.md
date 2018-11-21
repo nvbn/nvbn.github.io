@@ -15,7 +15,7 @@ Unfortunately, I was traveling without local sim-card and almost without interne
 I can't use Google Location History as in [the fun research about the commute](/2018/05/01/commute/).
 But at least I have tweets and a lot of photos.
 
-At first, I've [reused old code](2017/09/10/airports-graph/)(more internal linking)
+At first, I've [reused old code](2017/09/10/airports-graph/) (more internal linking)
 and extracted information about flights from tweets:
 
 ~~~python
