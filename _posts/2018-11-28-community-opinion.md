@@ -62,6 +62,7 @@ posts_df[['subreddit', 'score']] \
     .reset_index() \
     .plot(kind='barh', x='subreddit', y='score', title='Score', legend=False)
 ~~~
+
 ![Score by subreddit](/assets/community_opinion/score.png)
 
 A second obvious metric is a number of comments:
@@ -74,6 +75,7 @@ posts_df[['subreddit', 'num_comments']] \
     .plot(kind='barh', x='subreddit', y='num_comments',
           title='Number of comments', legend=False)
 ~~~
+
 ![Number of comments](/assets/community_opinion/number_of_comments.png)
 
 As absolute numbers can't say us anything about an opinion of a
@@ -113,6 +115,7 @@ posts_df[['subreddit', 'norm_score', 'norm_num_comments']] \
                      'norm_num_comments': 'Normalized number of comments'}) \
     .plot(kind='barh', x='subreddit',title='Normalized popularity')
 ~~~
+
 ![Normalized popularity](/assets/community_opinion/norm_popularity.png)
 
 As in different subreddits a link can be shared with a different title
@@ -142,6 +145,7 @@ posts_df[['subreddit', 'title_neg', 'title_neu', 'title_pos', 'title_compound']]
                      'title_compound': 'Title sentiment'}) \
     .plot(kind='barh', x='subreddit', title='Title sentiments', legend=True)
 ~~~
+
 ![Title sentiments](/assets/community_opinion/title_sentiment.png)
 
 Sentiments of a title isn't that interesting, but it might be much
@@ -183,6 +187,7 @@ posts_with_comments_df[['subreddit'] + percent_columns] \
     .set_major_formatter(FuncFormatter(lambda y, _: '{:.1f}%'.format(y * 100)))
 ~~~
 It's easy to spot that on less popular subreddits comments are more opinionated:
+
 ![Comments sentiments](/assets/community_opinion/comments_sent_percent.png)
 
 The same can be spotted with mean normalized scores:
@@ -203,6 +208,7 @@ posts_with_comments_df[['subreddit'] + norm_score_columns] \
     .plot(kind='bar', x='subreddit', legend=True,
           title='Mean normalized score of comments by sentiments buckets')
 ~~~
+
 ![Comments normalized score](/assets/community_opinion/comments_norm_score.png)
 
 Although those plots are fun even with that link, it's more fun with
@@ -213,6 +219,7 @@ present the news in a different way:
 ![Hot title sentiment](/assets/community_opinion/hot_title_sentiment.png)
 
 And comments are rated differently, some subreddits are more neutral, some definitely not:
+
 ![Hot title sentiment](/assets/community_opinion/hot_comments_norm_score.png)
 
 [Gist with full source code](https://gist.github.com/nvbn/ece1528ff5af2ecac6d2ee39234287ea).
