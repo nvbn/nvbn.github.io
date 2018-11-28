@@ -7,7 +7,7 @@ image:      /assets/community_opinion/comments_sent_percent.png
 ---
 
 As everyone knows a lot of subreddits are opinionated, so I thought that it might be
-interesting to measure the opinion of different subreddits opinions. Not trying to start
+interesting to measure the opinion of different subreddits. Not trying to start
 a holy war I've specifically decided to ignore r/worldnews and similar subreddits, and chose a semi-random topic &ndash;
 ["Apu reportedly being written out of The Simpsons"](https://www.indiewire.com/2018/10/simpsons-drop-apu-character-adi-shankar-1202015372/).
 
