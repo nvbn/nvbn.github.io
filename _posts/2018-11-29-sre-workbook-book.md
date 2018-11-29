@@ -3,7 +3,7 @@ layout:     post
 title:      "Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara and Stephen Thorne: The Site Reliability Workbook"
 date:       2018-11-29 20:30:00
 keywords:   book
-image:      /assets/spark_book.jpg
+image:      /assets/sre_workbook.jpg
 ---
 
 ![book cover white](/assets/sre_workbook.jpg) More than two years ago I've read
