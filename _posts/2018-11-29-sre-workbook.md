@@ -7,7 +7,7 @@ image:      /assets/spark_book.jpg
 ---
 
 ![book cover white](/assets/sre_workbook.jpg) More than two years ago I've read
-[SRE Book](https://nvbn.github.io/2016/08/19/sre-book/), and now I finally found a time
+[SRE Book](/2016/08/19/sre-book/), and now I finally found a time
 to read [The Site Reliability Workbook by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara and Stephen Thorne](https://landing.google.com/sre/books/).
 This book is more interesting, as it's less idealistic and contains a lot of cases
 from real life. The book has examples of correct and wrong SLOs, explains how to properly
