@@ -2,8 +2,9 @@
 
 const gulp = require("gulp"),
   shell = require("gulp-shell"),
-  browserSync = require("browser-sync").create(),
-  lastSync = new Date();
+  browserSync = require("browser-sync").create();
+
+let lastSync = new Date();
 
 const build = shell.task(["bundle exec jekyll build --watch --incremental"]);
 
