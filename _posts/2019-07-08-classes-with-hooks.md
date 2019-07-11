@@ -123,7 +123,7 @@ const asDescriptor = ([val, setVal]) => ({
   set: newVal => setVal(newVal),
 });
 
-export const Hookable = function(props) {
+const Hookable = function(props) {
   return new Proxy(this, {
     set: (obj, name, val) => {
       if (val && val.__isPropGetter) {
@@ -187,7 +187,7 @@ similar problem with context managers API solved by [contextmanager decorator](h
 I tried the same approach with effects:
 
 ~~~javascript
-export const fromGenerator = (hook, genFn, deps) => fn => {
+const fromGenerator = (hook, genFn, deps) => fn => {
   const gen = genFn();
   hook(() => {
     gen.next();
