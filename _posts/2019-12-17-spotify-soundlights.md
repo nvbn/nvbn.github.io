@@ -151,7 +151,7 @@ when the current playing song changes and produces three events:
 
 * `EventStop` &ndash; nothing is playing;
 * `EventSongChanged(analysis, start_time)` &ndash; song changed;
-* `EventAdjustStartTime(analysis, start_time)` &ndash; sync song start time in case of discrepancies or manual changes.
+* `EventAdjustStartTime(start_time)` &ndash; sync song start time in case of discrepancies or manual changes.
 
 ```python
 async def _listen_to_spotify_changes(session: aiohttp.ClientSession) -> AsyncIterable[Event]:
