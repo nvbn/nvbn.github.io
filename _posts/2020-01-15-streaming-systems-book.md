@@ -3,7 +3,7 @@ layout:     post
 title:      "Tyler Akidau, Slava Chernyak, Reuven Lax: Streaming Systems"
 date:       2020-01-15 22:30:00
 keywords:   book
-image:      /assets/release_book.jpg
+image:      /assets/streaming_book.png
 ---
 
 ![book cover white](/assets/streaming_book.png) Recently I started to
