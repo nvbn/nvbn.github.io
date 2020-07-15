@@ -6,6 +6,6 @@
     "browser-sync": "^2.7.12",
     "gulp": "^4.0.2",
     "gulp-shell": "^0.7.0",
-    "lodash": "^3.9.3"
+    "lodash": "^4.17.19"
   }
 }
