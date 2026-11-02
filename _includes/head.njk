@@ -1,0 +1,41 @@
+<head>
+    <meta charset="utf-8">
+    <title>{% if title %}{{ title }} | {% endif %}{{ site.name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if keywords %}<meta name="keywords" content="{{ keywords }}">{% endif %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" type="application/rss+xml" href="/feed.xml">
+    <link rel="stylesheet" href="/css/pixyll.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <meta name="google-site-verification" content="6dnjNwaZ3UKvkzm51z_Iyzq-BF3VL2Xek6gGfB9VgEU">
+
+    <script src="/js/main.js"></script>
+    <script src="https://www.youtube.com/iframe_api" async></script>
+    <script type="module">
+        if (document.querySelector('.mermaid')) {
+            const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@12.2.0/dist/mermaid.esm.min.mjs');
+            mermaid.initialize({ startOnLoad: true });
+        }
+    </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-55084459-1', 'auto');
+        ga('send', 'pageview');
+        if (window.location.host === 'nvbn.github.io' && window.location.protocol !== 'https:') {
+            window.location.protocol = 'https:';
+        }
+    </script>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@nvbn">
+    <meta name="twitter:creator" content="@nvbn">
+    <meta name="og:title" content="{{ title or site.name }}">
+    {% if date %}
+    <meta name="og:description" content="{{ content | striptags | truncate(200) }}">
+    {% endif %}
+    <meta name="og:image" content="{{ site.url }}{{ image or '/assets/default_card_image.png' }}">
+</head>

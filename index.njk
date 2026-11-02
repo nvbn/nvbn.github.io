@@ -1,0 +1,32 @@
+---
+title: Welcome
+layout: default.njk
+pagination:
+  data: collections.posts
+  size: 10
+  reverse: true
+  addAllPagesToCollections: true
+permalink: "{% if pagination.pageNumber == 0 %}/{% else %}/page{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+
+{% for post in pagination.items %}
+<article>
+    <header>
+        <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+        <span class="date"><i class="icon-clock"></i><time datetime="{{ post.data.date | dateISO }}">{{ post.data.date | dateDisplay }}</time></span><br/>
+        <span class="category"><i class="icon-tag"></i> {{ (post.data.categories or []) | join(', ') }}</span><br/>
+        <span class="author"><i class="icon-user"></i> {{ post.data.author or site.author }}</span>
+    </header>
+    <div class="entry">{{ post.templateContent | excerpt | safe }}</div>
+</article>
+{% endfor %}
+
+<div id="paginator">
+    {% if pagination.href.next %}
+    <a href="{{ pagination.href.next }}">&laquo; Older Posts</a>
+    {% endif %}
+    {% if pagination.href.previous %}
+    <span class="more"><a href="{{ pagination.href.previous }}">Newer Posts &raquo;</a></span>
+    {% endif %}
+</div>
+<script>prepareSlowIframes();</script>

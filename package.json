@@ -2,10 +2,20 @@
   "name": "nvbn.github.io",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prebuild": "node scripts/clean.mjs",
+    "build": "eleventy --quiet",
+    "dev": "eleventy --serve",
+    "test": "npm run build && node --test"
+  },
   "devDependencies": {
-    "browser-sync": "^2.7.12",
-    "gulp": "^4.0.2",
-    "gulp-shell": "^0.7.0",
-    "lodash": "^3.9.3"
+    "@11ty/eleventy": "^3.1.7",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "js-yaml": "^4.1.0",
+    "sass": "^1.107.1"
   }
 }
